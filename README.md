@@ -38,3 +38,16 @@ une GL5516 LDR Photosensible Résistance pour le capteur laser 0,25€ : https:/
 
 Arduino Uno 20€ : https://www.amazon.fr/Arduino-A000066-M%C3%A9moire-flash-32/dp/B008GRTSV6/ref=asc_df_B008GRTSV6/?tag=googshopfr-21&linkCode=df0&hvadid=194939262438&hvpos=&hvnetw=g&hvrand=16296767096769731201&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056593&hvtargid=pla-82806036780&psc=1&mcid=199bedd93c7f3b60a213e8fd3504a416
 
+ou
+
+ESP32 10€ : https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG/ref=asc_df_B071P98VTG/?tag=googshopfr-21&linkCode=df0&hvadid=194939354820&hvpos=&hvnetw=g&hvrand=3325158748750025302&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056593&hvtargid=pla-367709801435&mcid=3c2144aa0c7c390d949675158d869029&th=1
+
+Technologies utilisée : 
+
+Node Js 
+Html /css 
+C
+Aruduino 
+
+
+
