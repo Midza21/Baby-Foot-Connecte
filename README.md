@@ -44,9 +44,9 @@ ESP32 10€ : https://www.amazon.fr/AZDelivery-Development-successeur-Compatible
 
 Technologies utilisée : 
 
-Node Js 
-Html /css 
-C type arduino 
+-Node Js 
+-Html /css 
+-C type arduino 
 
 
 
