@@ -46,8 +46,8 @@ Technologies utilisée :
 
 Node Js 
 Html /css 
-C
-Aruduino 
+C type arduino 
+
 
 
 
