@@ -36,4 +36,5 @@ ARD SHD LCD3,5 20€: https://www.reichelt.com/fr/fr/bouclier-arduino-affichage-
 
 une GL5516 LDR Photosensible Résistance pour le capteur laser 0,25€ : https://www.otronic.nl/fr/gl5516-ldr-photosensible-resistance-photoresistanc.html?source=googlebase&gad_source=1&gclid=CjwKCAiAivGuBhBEEiwAWiFmYQifl4VPXzNB_SFO9VOE-H_Kp3ENRh4F7uUrIbH5osmh2IbvL8YAjxoCnOwQAvD_BwE
 
+Arduino Uno 20€ : https://www.amazon.fr/Arduino-A000066-M%C3%A9moire-flash-32/dp/B008GRTSV6/ref=asc_df_B008GRTSV6/?tag=googshopfr-21&linkCode=df0&hvadid=194939262438&hvpos=&hvnetw=g&hvrand=16296767096769731201&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056593&hvtargid=pla-82806036780&psc=1&mcid=199bedd93c7f3b60a213e8fd3504a416
 
