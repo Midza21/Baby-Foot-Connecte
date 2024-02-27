@@ -3,7 +3,7 @@
 
 Baby-Foot-Connecte
 
-Introduction
+**Introduction**
 
 Présentation du projet
 
