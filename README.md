@@ -10,23 +10,23 @@ Présentation du projet
 Le projet consiste à créer un baby-foot connecté qui permettra aux joueurs de suivre les scores sur un écran et de vérifier si le ballon a franchi correctement la ligne de but. Les données seront ensuite stockées dans une base de données à l'aide d'une API.
 Je pense que ce projet sera monter par nos soin dans le faclab avec toutes les machines à disposition 
 
-Objectif du baby-foot connecté
+**Objectif du baby-foot connecté**
 
 L'objectif principal est de fournir aux joueurs une expérience de jeu immersive en ajoutant des éléments sonores et visuels pour recréer l'ambiance d'un match de football. La technologie de vérification de la ligne de but vise à garantir l'équité du jeu, tandis que la sauvegarde des données permettra aux joueurs de suivre leur progression et de revisiter leurs parties.
 
-Fonctionnalités principales
+**Fonctionnalités principales**
 
 Ajout d'effets sonores et d'animations pour une immersion accrue.
 Vérification de la validité des buts grâce à une technologie de ligne de but.
 Stockage des scores et des données de jeu pour une traçabilité complète.
 
-2 projets d'inspiration:
+**2 projets d'inspiration:**
 
 https://www.instructables.com/Automated-Baby-Foot-Table-Simplified/
 
 Foosball Society : https://www.youtube.com/watch?v=9zfI360UP0w
 
-Matériel :
+**Matériel :**
 
 Deux capteur laser Diode laser 0.83€ :https://www.otronic.nl/fr/diode-laser-5v-module-laser-rouge-650nm-5mw-tete-c.html?source=googlebase&gad_source=1&gclid=CjwKCAiAivGuBhBEEiwAWiFmYeADnPUUynW5qXyKOuiyetmzkWDq_zSN4IzA4RV0QVCr4QJtSxjTKxoCw8IQAvD_BwE
 
@@ -42,7 +42,7 @@ ou
 
 ESP32 10€ : https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG/ref=asc_df_B071P98VTG/?tag=googshopfr-21&linkCode=df0&hvadid=194939354820&hvpos=&hvnetw=g&hvrand=3325158748750025302&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056593&hvtargid=pla-367709801435&mcid=3c2144aa0c7c390d949675158d869029&th=1
 
-Technologies utilisée : 
+**Technologies utilisée :** 
 
 -Node Js 
 -Html /css 
