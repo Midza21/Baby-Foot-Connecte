@@ -78,6 +78,8 @@ Brouillon :
 * BUT
 * VICTOIRE
 * DEFAITE
+* MDP
+* EMAIL
 
 **Partie**
 
@@ -87,6 +89,7 @@ Brouillon :
 * ADVERSAIRE2
 * SCORE1
 * SCORE2
+* ETAT DE LA PARTIE
 
 **BabyFoot**
 
