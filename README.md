@@ -65,7 +65,7 @@ Brouillon :
 
 * Affiche le score sur un ecran
 * Goal line technologie
-* Led a chaque but
+* Ruban Led a chaque but
 * Haut parleur a chaque but
 * 
 
