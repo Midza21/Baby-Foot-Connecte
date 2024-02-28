@@ -61,6 +61,7 @@ Brouillon :
 * Se connecte 
 * Recupere les statistiques des joueurs sur une bdd peux aussi cree un tournoi avec les joueurs co
 * Page admin
+* Page Classement 
 
 **Baby foot**
 
@@ -68,6 +69,26 @@ Brouillon :
 * Goal line technologie
 * Ruban Led a chaque but
 * Haut parleur a chaque but
-  
 
+**Table**
 
+**Utilisateur**
+*ID
+*NOM
+*BUT
+*VICTOIRE
+*DEFAITE
+
+**Partie**
+
+*ID
+*DATE 
+*ADVERSAIRE1
+*ADVERSAIRE2
+*SCORE1
+*SCORE2
+
+**BabyFoot**
+
+*ID
+*LOCALISATION 
