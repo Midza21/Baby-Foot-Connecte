@@ -60,6 +60,7 @@ Brouillon :
 * Formulaire qui Cree un utilisateur 
 * Se connecte 
 * Recupere les statistiques des joueurs sur une bdd peux aussi cree un tournoi avec les joueurs co
+* Page admin
 
 **Baby foot**
 
