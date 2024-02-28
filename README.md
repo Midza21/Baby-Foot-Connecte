@@ -55,7 +55,7 @@ ESP32 10€ : https://www.amazon.fr/AZDelivery-Development-successeur-Compatible
 
 Brouillon :
 
-** 1 app web **
+**1 app web**
 
 * Formulaire qui Cree un utilisateur 
 * Se connecte 
