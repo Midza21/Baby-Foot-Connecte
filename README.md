@@ -49,7 +49,7 @@ ESP32 10€ : https://www.amazon.fr/AZDelivery-Development-successeur-Compatible
 * Node Js 
 * Html /css 
 * C type arduino 
-* MongoDB 
+* SQL 
 
 
 
