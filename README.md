@@ -73,22 +73,22 @@ Brouillon :
 **Table**
 
 **Utilisateur**
-*ID
-*NOM
-*BUT
-*VICTOIRE
-*DEFAITE
+* ID
+* NOM
+* BUT
+* VICTOIRE
+* DEFAITE
 
 **Partie**
 
-*ID
-*DATE 
-*ADVERSAIRE1
-*ADVERSAIRE2
-*SCORE1
-*SCORE2
+* ID
+* DATE 
+* ADVERSAIRE1
+* ADVERSAIRE2
+* SCORE1
+* SCORE2
 
 **BabyFoot**
 
-*ID
-*LOCALISATION 
+* ID
+* LOCALISATION 
