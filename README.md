@@ -53,4 +53,20 @@ ESP32 10€ : https://www.amazon.fr/AZDelivery-Development-successeur-Compatible
 
 
 
+Brouillon :
+
+** 1 app web **
+
+* Formulaire qui Cree un utilisateur 
+* Se connecte 
+* Recupere les statistiques des joueurs sur une bdd peux aussi cree un tournoi avec les joueurs co
+
+**Baby foot**
+
+* Affiche le score sur un ecran
+* Goal line technologie
+* Led a chaque but
+* Haut parleur a chaque but
+* 
+
 
