@@ -20,11 +20,13 @@ Ajout d'effets sonores et d'animations pour une immersion accrue.
 Vérification de la validité des buts grâce à une technologie de ligne de but.
 Stockage des scores et des données de jeu pour une traçabilité complète.
 
-**2 projets d'inspiration:**
+**3 projets d'inspiration:**
 
 https://www.instructables.com/Automated-Baby-Foot-Table-Simplified/
 
 Foosball Society : https://www.youtube.com/watch?v=9zfI360UP0w
+
+Baby-Foot Connecté : https://perso-laris.univ-angers.fr/~projetsei4/1718/P2/Rapport_Projet_Babyfoot.pdf
 
 **Matériel :**
 
