@@ -10,6 +10,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+// Connexion à la page de Connexion de l'application
+
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Connexion' });
+});
+
 // Retourne tous les users de la base
 router.get("/get_users", async (req, res) => {
   const allUsers = await prisma.users.findMany({});
@@ -256,5 +262,9 @@ router.put("/update_game/:id", async (req, res) => {
       res.status(500).json({ erreur: 'Erreur lors de la mise à jour du game' });
     }
   });
+
+
+
+ 
 
 module.exports = router;

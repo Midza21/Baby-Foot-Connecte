@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <!-- <link rel="stylesheet" href="public/stylesheets/style.css"> -->
+            <title><%= title %></title>
+        </head>
+
+        <style>
+            /*************************************************** POUR LE FORMULAIRE DE CONNEXION ********************************************/
+
+            .login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(24, 20, 20, 0.987);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0,0,0,.6);
+            border-radius: 10px;
+            }
+
+            .login-box .user-box {
+            position: relative;
+            }
+
+            .login-box .user-box input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 30px;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+            }
+
+            .login-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+            }
+
+            .login-box .user-box input:focus ~ label,
+            .login-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #bdb8b8;
+            font-size: 12px;
+            }
+
+            .login-box form button {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            margin-top: 40px;
+            letter-spacing: 4px
+            }
+
+            .login-box button:hover {
+            background: #03f40f;
+            color: rgba(0,0,0,.6);
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03f40f,
+                        0 0 25px #03f40f,
+                        0 0 50px #03f40f,
+                        0 0 100px #03f40f;
+            }
+
+            .login-box button span {
+            position: absolute;
+            display: block;
+            }
+
+            @keyframes btn-anim1 {
+            0% {
+                left: -100%;
+            }
+
+            50%,100% {
+                left: 100%;
+            }
+            }
+
+            .login-box button span:nth-child(1) {
+            bottom: 2px;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #03f40f);
+            animation: btn-anim1 2s linear infinite;
+            }
+
+            button{
+                background: rgba(0,0,0,.6);
+            }
+
+        </style>
+
+        <body>
+            <div class="login-box">
+                <form>
+                    <div class="user-box">
+                        <input type="text" id="email" name="email" required="">
+                        <label>Identifiant</label>
+                    </div>
+
+                    <div class="user-box">
+                        <input type="password" id="password "name="password" required="">
+                        <label>Mot de Passe</label>
+                    </div>
+
+                    <center>  
+                        <button type="submit" class="btn" onclick="connexion()">
+                            <%= title %>
+                        </button>   
+                    </center>
+                </form>
+            </div>
+<!-- 
+            <form>
+                <div class="form-group">
+                    <label for="nom">identifiant</label>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer votre email ...">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mot de Passe </label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Entrer votre mot de passe ...">
+                </div>
+
+                <button type="submit" class="btn btn-primary" onclick="connexion()"><%= title %></button>
+            </form> -->
+
+            <script>
+                function connexion() {
+                    const user = document.getElementById('email').value;
+                    const password = document.getElementById('password').value;
+
+                    try {
+                        const response = fetch('http://localhost:8080/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, password })
+                        });
+                        
+                        if (!response.ok) {
+                        throw new Error('Erreur lors de la connexion');
+                        }
+
+                        window.location.href = 'http://localhost:8080/menu.ejs'; // Rediriger vers la page de tableau de bord après la connexion réussie
+                    } 
+                    
+                    catch (error) {
+                        console.error(error);
+                    }
+                };
+            </script>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        </body>
+    </html>

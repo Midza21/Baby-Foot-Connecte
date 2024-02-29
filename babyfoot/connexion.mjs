@@ -22,12 +22,12 @@ app.use(session({
 // ****************************************** Connexion à la session depuis un formulaire ****************************************
 
 app.post('/login', async (req, res) => {
-  const { nom , password } = req.body;
+  const { email , password } = req.body;
 
 
   /////////////////////////\ Vérification de l'existance de l'utilisateur existe dans la base de données /\\\\\\\\\\\\\\\\\\\\\\\\
 
-  const user = await prisma.Users.findUnique({ where: { nom } });
+  const user = await prisma.Users.findUnique({ where: { email } });
   if (!user) {
     return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect' });
   }
@@ -43,7 +43,7 @@ app.post('/login', async (req, res) => {
 
   ///////////////////////////////////\ Connecter l'utilisateur en créant une session /\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-  req.session.user = { id: user.id, username: user.nom };
+  req.session.user = { id: user.id, email: user.email };
   res.json({ message: 'Connexion réussie' });
 });
 
