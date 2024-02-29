@@ -7,30 +7,31 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model Users {
-  id                Int @id @default (autoincrement())
-  nom               String @db.VarChar(255)
-  role              String @db.VarChar(255) @default("user")
-  password          String @db.VarChar(255)
-  buts              Int @default(0)
-  email              String   @unique
-  victoires         Int @default(0)
+  id        Int    @id @default(autoincrement())
+  nom       String @db.VarChar(255)
+  role      String @default("joueur") @db.VarChar(255)
+  mail      String @unique
+  password  String @db.VarChar(255)
+  buts      Int    @default(0)
+  victoires Int    @default(0)
 }
+
 model Games {
-  id                 Int @id @default (autoincrement())
-  date               DateTime  @default (now())
-  adversaire1        String @db.VarChar(255)
-  adversaire2        String @db.VarChar(255)
-  score1              Int @default(0)
-  score2              Int @default(0)
-  babyfoot            Int @default(0)
-  etat              String @db.VarChar(255)
+  id          Int      @id @default(autoincrement())
+  date        DateTime @default(now())
+  adversaire1 Int
+  adversaire2 Int
+  score1      Int      @default(0)
+  score2      Int      @default(0)
+  babyfoot    Int      @default(0)
+  etat        String   @db.VarChar(255)
 }
 
 model Babyfoot {
-  id                Int @id @default (autoincrement())
-  localisation      String @db.VarChar(255)
+  id           Int    @id @default(autoincrement())
+  localisation String @db.VarChar(255)
 }

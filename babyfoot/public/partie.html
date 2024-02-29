@@ -1,95 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulaire de création de partie</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
 
-        h2 {
-            color: #3498db;
-        }
+      h2 {
+        color: #3498db;
+      }
 
-        form {
-            max-width: 400px;
-            margin: 20px auto;
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      form {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            color: #2c3e50;
-        }
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        color: #2c3e50;
+      }
 
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            border: 1px solid #bdc3c7;
-            border-radius: 4px;
-            font-size: 16px;
-        }
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        font-size: 16px;
+      }
 
-        input[type="submit"], #btnAjouterJoueurs {
-            background-color: #3498db;
-            color: white;
-            cursor: pointer;
-        }
+      input[type="submit"],
+      #btnAjouterJoueurs {
+        background-color: #3498db;
+        color: white;
+        cursor: pointer;
+      }
 
-        input[type="submit"]:hover, #btnAjouterJoueurs:hover {
-            background-color: #2980b9;
-        }
+      input[type="submit"]:hover,
+      #btnAjouterJoueurs:hover {
+        background-color: #2980b9;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <h2>Création d'une nouvelle partie</h2>
 
-<h2>Création d'une nouvelle partie</h2>
+    <form action="/new_game" method="post">
+      <label for="nom_partie">Nom de la partie :</label>
+      <input type="text" id="nom_partie" name="nom_partie" required />
 
-<form action="traitement_partie.php" method="post">
-    <label for="nom_partie">Nom de la partie :</label>
-    <input type="text" id="nom_partie" name="nom_partie" required>
+      <label for="babyfoot">Sélectionner un baby-foot :</label>
+      <select id="babyfoot" name="babyfoot" required>
+        <!-- Options seront ajoutées dynamiquement ici -->
+      </select>
 
-    <label for="date_partie">Date de la partie :</label>
-    <input type="date" id="date_partie" name="date_partie" required>
+      <label for="mode_partie">Mode de la partie :</label>
+      <select id="mode_partie" name="mode_partie" required>
+        <option value="1v1">1v1</option>
+      </select>
 
-    <label for="babyfoot">Sélectionner un baby-foot :</label>
-    <select id="babyfoot" name="babyfoot" required>
-        <!-- Option 1 -->
-        <option value="babyfoot1">Baby-foot 1</option>
-        <!-- Option 2 -->
-        <option value="babyfoot2">Baby-foot 2</option>
-        <!-- Ajoute d'autres options en fonction de ceux présents en base de données -->
-    </select>
+      <!-- Bouton pour ajouter des joueurs -->
+      <button type="button" id="btnAjouterJoueurs">Ajouter des joueurs</button>
 
-    <!-- Bouton pour ajouter des joueurs -->
-    <button type="button" id="btnAjouterJoueurs">Ajouter des joueurs</button>
+      <!-- Espace pour afficher les joueurs -->
+      <div id="joueursContainer"></div>
 
-    <!-- Espace pour afficher les joueurs -->
-    <div id="joueursContainer"></div>
+      <input type="submit" value="Lancer la partie" />
+    </form>
 
-    <input type="submit" value="Créer la partie">
-</form>
+    <!-- Script JavaScript pour charger dynamiquement les joueurs -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const babyfootSelect = document.getElementById("babyfoot");
+        const joueursContainer = document.getElementById("joueursContainer");
+        const form = document.querySelector("form");
 
-<!-- Script JavaScript pour charger dynamiquement les joueurs -->
-<script>
-    document.getElementById('btnAjouterJoueurs').addEventListener('click', function() {
-        // Ici, tu peux ajouter du code JavaScript pour charger les joueurs depuis la base de données
-        // et les afficher dans la section avec l'id 'joueursContainer'
-        alert('Fonctionnalité à implémenter : Charger les joueurs depuis la base de données.');
-    });
-</script>
+        // Effectuer une requête AJAX pour récupérer la liste des babyfoots depuis le serveur
+        fetch("/babyfoots")
+          .then((response) => response.json())
+          .then((babyfoots) => {
+            // Créer une option pour chaque babyfoot
+            babyfoots.forEach((babyfoot) => {
+              const option = document.createElement("option");
+              option.value = babyfoot.id;
+              option.text = babyfoot.localisation;
+              babyfootSelect.add(option);
+            });
+          })
+          .catch((error) =>
+            console.error(
+              "Erreur lors de la récupération des babyfoots :",
+              error
+            )
+          );
 
-</body>
+        document
+          .getElementById("btnAjouterJoueurs")
+          .addEventListener("click", function () {
+            // Effectuer une requête AJAX pour récupérer la liste des joueurs depuis le serveur
+            fetch("/users")
+              .then((response) => response.json())
+              .then((players) => {
+                // Créer une liste déroulante pour chaque joueur
+                joueursContainer.innerHTML = "";
+
+                const maxPlayers = 2; // Seulement 2 joueurs pour le mode 1v1
+
+                for (let i = 0; i < maxPlayers; i++) {
+                  const selectPlayer = document.createElement("select");
+                  selectPlayer.name = "joueur[]";
+                  selectPlayer.required = true;
+
+                  // Créer une option pour chaque joueur
+                  players.forEach((player) => {
+                    const option = document.createElement("option");
+                    option.value = player.id;
+                    option.text = player.nom;
+                    selectPlayer.add(option);
+                  });
+
+                  // Ajouter la liste déroulante au conteneur
+                  joueursContainer.appendChild(selectPlayer);
+                }
+              })
+              .catch((error) =>
+                console.error(
+                  "Erreur lors de la récupération des joueurs :",
+                  error
+                )
+              );
+          });
+
+        // Ajouter un gestionnaire d'événement pour le submit du formulaire
+        form.addEventListener("submit", function (event) {
+          // Empêcher le comportement par défaut du formulaire
+          event.preventDefault();
+
+          // Récupérer les valeurs du formulaire
+          const adversaire1Select = document.querySelector(
+            'select[name="joueur[]"]:nth-child(1)'
+          );
+          const adversaire2Select = document.querySelector(
+            'select[name="joueur[]"]:nth-child(2)'
+          );
+          const babyfoot = parseInt(babyfootSelect.value, 10); // Convertir en entier
+
+          // Vérifier que les deux joueurs sont sélectionnés
+          if (adversaire1Select && adversaire2Select) {
+            const adversaire1 = parseInt(adversaire1Select.value, 10); // Convertir en entier
+            const adversaire2 = parseInt(adversaire2Select.value, 10); // Convertir en entier
+
+            // Effectuer une requête AJAX pour créer une nouvelle partie
+            fetch("/new_game", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                adversaire1: adversaire1,
+                adversaire2: adversaire2,
+                babyfoot: babyfoot,
+              }),
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                console.log("Nouvelle partie créée:", result);
+                // Vous pouvez ajouter ici d'autres actions après la création de la partie
+              })
+              .catch((error) =>
+                console.error("Erreur lors de la création de la partie:", error)
+              );
+          } else {
+            console.error("Veuillez sélectionner les deux joueurs.");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
