@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des babyfoots</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        color: #3498db;
+      }
+
+      form {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0 5px;
+        color: #2c3e50;
+      }
+
+      input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        font-size: 16px;
+        display: inline-block;
+        position: relative;
+      }
+
+      input[type="submit"] {
+        background-color: #3498db;
+        color: white;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Gestion des babyfoots</h2>
+
+    <!-- Formulaire pour Ajouter un babyfoot -->
+    <form id="addBabyfootForm" action="/new_babyfoot" method="post">
+      <label for="localisation">Localisation :</label>
+      <input type="text" id="localisation" name="localisation" required />
+
+      <input type="submit" value="Ajouter un babyfoot" />
+    </form>
+
+    <!-- Votre script JavaScript existant -->
+    <script>
+      // Script pour la soumission du formulaire Ajouter un babyfoot
+      document
+        .getElementById("addBabyfootForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const formData = {
+            localisation: document.getElementById("localisation").value,
+          };
+
+          fetch("/new_babyfoot", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert("Babyfoot ajouté avec succès!");
+              // Vous pouvez effectuer d'autres actions ici après l'ajout du babyfoot
+            })
+            .catch((error) => {
+              console.error("Erreur lors de l'ajout du babyfoot:", error);
+              alert("Une erreur s'est produite lors de l'ajout du babyfoot.");
+            });
+        });
+    </script>
+  </body>
+</html>
