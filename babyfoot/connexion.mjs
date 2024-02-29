@@ -7,6 +7,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -33,6 +34,7 @@ app.post('/login', async (req, res) => {
 
 
   /////////////////////////////////////////////\ Vérification du mot de passe /\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
   const passwordMatch = await bcrypt.compare(password, user.password);
   if (!passwordMatch) {
     return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect' });
@@ -43,7 +45,6 @@ app.post('/login', async (req, res) => {
 
   req.session.user = { id: user.id, username: user.nom };
   res.json({ message: 'Connexion réussie' });
-  res.render("menu.js", {title: "Bienvenue sur Baby-foot Striker !"}); 
 });
 
 // *************************************** Vérifie l'état de la session utilisateur **********************************************
