@@ -5,9 +5,11 @@ import bcrypt from 'bcryptjs';
 import session from 'express-session';
 import { PrismaClient } from '@prisma/client';
 
+
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
 const app = express();
+
 
 app.use(express.json());
 app.use(express.urlencoded());
@@ -47,6 +49,7 @@ app.post('/login', async (req, res) => {
   res.json({ message: 'Connexion réussie' });
 });
 
+
 // *************************************** Vérifie l'état de la session utilisateur **********************************************
 
 
@@ -57,6 +60,7 @@ app.get('/check-session', (req, res) => {
     res.json({ loggedIn: false });
   }
 });
+
 
 //*********************************************** Déconnexion utilisateur ********************************************************
 
