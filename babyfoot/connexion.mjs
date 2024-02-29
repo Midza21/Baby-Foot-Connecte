@@ -6,9 +6,10 @@ import session from 'express-session';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
-const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(bodyParser.json());
 app.use(session({
   secret: 'your-secret-key',
@@ -20,12 +21,12 @@ app.use(session({
 // ****************************************** Connexion à la session depuis un formulaire ****************************************
 
 app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
+  const { nom , password } = req.body;
 
 
   /////////////////////////\ Vérification de l'existance de l'utilisateur existe dans la base de données /\\\\\\\\\\\\\\\\\\\\\\\\
 
-  const user = await prisma.user.findUnique({ where: { username } });
+  const user = await prisma.Users.findUnique({ where: { nom } });
   if (!user) {
     return res.status(401).json({ error: 'Nom d\'utilisateur ou mot de passe incorrect' });
   }
@@ -40,7 +41,7 @@ app.post('/login', async (req, res) => {
 
   ///////////////////////////////////\ Connecter l'utilisateur en créant une session /\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-  req.session.user = { id: user.id, username: user.username };
+  req.session.user = { id: user.id, username: user.nom };
   res.json({ message: 'Connexion réussie' });
   res.render("menu.js", {title: "Bienvenue sur Baby-foot Striker !"}); 
 });

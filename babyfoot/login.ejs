@@ -10,8 +10,8 @@
         <body>
             <form>
                 <div class="form-group">
-                    <label for="username">identifiant</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Entrer votre email ...">
+                    <label for="nom">identifiant</label>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer votre email ...">
                 </div>
 
                 <div class="form-group">
@@ -19,12 +19,12 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Entrer votre mot de passe ...">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Connexion</button>
+                <button type="submit" class="btn btn-primary" onclick="connexion()">Connexion</button>
             </form>
 
             <script>
                 function connexion() {
-                    const utilis = document.getElementById('username').value;
+                    const user = document.getElementById('username').value;
                     const password = document.getElementById('password').value;
 
                     try {

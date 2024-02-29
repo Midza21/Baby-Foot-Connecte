@@ -31,5 +31,5 @@ model Games {
 
 model Babyfoot {
   id                Int @id @default (autoincrement())
-  localisation       String @db.VarChar(255)
+  localisation      String @db.VarChar(255)
 }
