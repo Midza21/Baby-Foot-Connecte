@@ -20,7 +20,7 @@ model Users {
 }
 model Games {
   id                 Int @id @default (autoincrement())
-  date               DateTime DateTime @default (now())
+  date               DateTime @default (now())
   adversaire1        String @db.VarChar(255)
   adversaire2        String @db.VarChar(255)
   score1              Int @default(0)
