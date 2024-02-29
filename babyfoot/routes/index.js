@@ -34,6 +34,12 @@ router.get('/admin', function(req, res, next) {
   res.render('admin', { title: 'Express' });
 });
 
+//retourne a la vue supprimer pour l'admin
+router.get('/utilisateur_supprimer', function(req, res, next) {
+  res.render('utilisateur_supprimer', { title: 'Express' });
+});
+
+
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
   const allGames = await prisma.games.findMany({});

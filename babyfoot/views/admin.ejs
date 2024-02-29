@@ -79,7 +79,7 @@
             <li>
                 <a href="#">Utilisateur</a>
                 <ul class="submenu">
-                  <li><a href="#">Supprimer un utilsateur</a></li>
+                  <li><a href="utilisateur_supprimer" onclick="loadContent('utilisateur_supprimer')">Supprimer un utilsateur</a></li>
                   <li><a href="#">Modifier un utilsateur</a></li>
                   <li><a href="#">Voir les utilsateur</a></li>
                 </ul>
@@ -103,7 +103,51 @@
         </ul>
       </nav>
 
-
-
+      <br> 
+      <div id="content">
+        <!-- Contenu de la page chargée sera affiché ici -->
+      </div>
 </body>
 </html>
+
+<script>
+ function loadContent(url) {
+    // Empêcher le comportement par défaut du lien
+    event.preventDefault();
+  
+    // Charger le contenu de la page cible dans la section de contenu
+    fetch(url)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('content').innerHTML = data;
+      })
+      .catch(error => console.error('Erreur:', error));
+  }
+
+
+    async function deleteDevice() {
+        const id = document.getElementById("idUtilisateur").value;
+        console.log(id)
+  console.log("ID du utilisateur à supprimer :", id);
+  
+  try {
+    const response = await fetch(`/delete_user/${id}`, { // Utilisation de l'ID saisi par l'utilisateur dans l'URL de la requête
+      method: "DELETE"
+    });
+    
+    if (response.ok) {
+      const deletedDevice = await response.json();
+      console.log("Dispositif supprimé :", deletedDevice);
+      alert("Dispositif supprimé avec succès !");
+      window.location.href = "admin"; // Rediriger vers une autre page après la suppression
+    } else {
+      const errorMessage = await response.text();
+      console.error("Erreur lors de la suppression du dispositif :", errorMessage);
+      alert("Une erreur s'est produite lors de la suppression du dispositif. Veuillez réessayer plus tard.");
+    }
+  } catch (error) {
+    console.error("Erreur lors de la suppression du dispositif :", error);
+    alert("Une erreur s'est produite lors de la suppression du dispositif. Veuillez réessayer plus tard.");
+  }
+}
+</script>
