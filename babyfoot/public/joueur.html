@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de création de joueur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #3498db;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;  /* Pour positionner le bouton à l'intérieur du champ */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #2c3e50;
+        }
+
+        input, select {
+            width: calc(100% - 20px); /* Ajustement pour le padding du bouton à l'intérieur du champ */
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 16px;
+            display: inline-block; /* Pour permettre l'alignement du bouton à l'intérieur */
+            position: relative;  /* Pour permettre l'alignement absolu du bouton */
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        /* Style pour le bouton à l'intérieur du champ */
+        .toggle-password {
+            position: absolute;
+            top: 40%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Création d'un nouveau joueur</h2>
+
+<form action="traitement_joueur.php" method="post">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="mot_de_passe">Mot de passe :</label>
+    <div style="position: relative;">
+        <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+        <button type="button" class="toggle-password" onclick="togglePasswordVisibility()">🔑</button>
+    </div>
+
+    <input type="submit" value="Créer le joueur">
+</form>
+
+<!-- Script JavaScript pour afficher ou masquer le mot de passe -->
+<script>
+    function togglePasswordVisibility() {
+        const motDePasse = document.getElementById('mot_de_passe');
+        motDePasse.type = motDePasse.type === 'password' ? 'text' : 'password';
+    }
+</script>
+
+</body>
+</html>
