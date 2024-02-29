@@ -11,13 +11,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-//route classement
-// router.get('/classement', function(req, res, next) {
-
-//   res.render('classement', { title: 'Express' });
-// });
-
-// Retourne tous les users de la base
+// Retourne a la vue classement
 router.get("/classement", async (req, res) => {
   try {
     const topUsers = await prisma.users.findMany({
@@ -33,6 +27,12 @@ router.get("/classement", async (req, res) => {
 }
 });
 
+
+// retourne a la vue admin
+
+router.get('/admin', function(req, res, next) {
+  res.render('admin', { title: 'Express' });
+});
 
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
