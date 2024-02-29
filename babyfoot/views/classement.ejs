@@ -79,20 +79,26 @@
     
     <div class="classement">
         <table>
+        <tr>
+          <th>Position</th>
+          <th>Joueur</th>
+          <th>Victoire</th>
+          <th>But</th>
+            <!-- Ajoutez d'autres colonnes si nécessaire -->
+        </tr>
+        <% let counter = 1; %>
+        <% users.forEach(user => { %>
+
             <tr>
-                <th>Position</th>
-                <th>Joueur</th>
-                <th>Victoire</th>
-                <th>But</th>
+              <td><%= counter %></td>
+                <td><%= user.nom %></td>
+                <td><%= user.victoires %></td>
+                <td><%= user.buts %></td>
+                <!-- Ajoutez d'autres données utilisateur si nécessaire -->
             </tr>
-            <tr >
-                <td></td>
-                <td> </td>
-                <td></td>
-                <td></td>
-            </tr>
-            
-        </table>
+            <% counter++; %> <!-- Incrémentation du compteur -->
+        <% }); %>
+    </table>
     </div>
 </body>
 </html>
