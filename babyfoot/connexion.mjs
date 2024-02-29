@@ -50,7 +50,7 @@ app.post('/login', async (req, res) => {
 });
 
 
-// *************************************** Vérifie l'état de la session utilisateur **********************************************
+// ************************************** Vérifie l'état de la session utilisateur ***********************************************
 
 
 app.get('/check-session', (req, res) => {

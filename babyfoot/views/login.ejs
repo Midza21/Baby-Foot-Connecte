@@ -154,7 +154,7 @@
                     const password = document.getElementById('password').value;
 
                     try {
-                        const response = fetch('http://localhost:8080/login', {
+                        const response = fetch('/login', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -166,7 +166,7 @@
                         throw new Error('Erreur lors de la connexion');
                         }
 
-                        window.location.href = 'http://localhost:8080/menu.ejs'; // Rediriger vers la page de tableau de bord après la connexion réussie
+                        window.location.href = 'http://localhost:3000/menu.ejs'; // Rediriger vers la page de tableau de bord après la connexion réussie
                     } 
                     
                     catch (error) {

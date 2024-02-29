@@ -5,6 +5,15 @@ const  {createHmac} = require('node:crypto');
 const { empty } = require('@prisma/client/runtime/library');
 
 const prisma = new PrismaClient();
+const app = express();
+app.use(express.static("public"));
+
+// Retourne tous les users de la base
+app.get("/users", async (req, res) => {
+  const allUsers = await prisma.users.findMany({});
+  res.status(200).json(allUsers);
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -72,7 +81,9 @@ router.post("/new_user", async (req, res) => {
     data: {
       nom: nom,
       email : email,
-      password: createHmac('sha256', password).update('I love cupcakes').digest('hex'),        
+      password: password 
+      ? createHmac('sha256', password).update('667 Ekip !').digest('hex') :"",  
+      role: "joueur",
     },
   });
   res.json(result);
@@ -264,7 +275,10 @@ router.put("/update_game/:id", async (req, res) => {
   });
 
 
-
+// Lancement du serveur
+app.listen(3000, () => {
+  console.log("Serveur à l'écoute sur le port 3000");
+});
  
 
 module.exports = router;
