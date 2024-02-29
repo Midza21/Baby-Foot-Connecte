@@ -33,6 +33,7 @@ router.get("/classement", async (req, res) => {
 }
 });
 
+
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
   const allGames = await prisma.games.findMany({});
