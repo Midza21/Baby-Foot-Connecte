@@ -69,3 +69,61 @@ tr:hover{
 
 
 
+/* Vos styles existants restent les mêmes */
+
+/* Ajoutez des styles pour la responsivité */
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin-right: 10px;
+    }
+
+    .classement {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px; /* Réduire la taille de la police pour les petits écrans */
+    }
+}
+
+/* Vos styles existants restent les mêmes */
+
+/* Ajoutez des styles pour la responsivité des tablettes */
+@media only screen and (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+/* Ajoutez des styles pour la responsivité des appareils mobiles */
+@media only screen and (max-width: 480px) {
+    .navbar {
+        padding: 5px 0; /* Réduire le rembourrage de la barre de navigation */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Afficher les liens de navigation en colonne */
+        align-items: flex-start;
+    }
+
+    .nav-links li {
+        margin: 5px 0; /* Réduire la marge entre les éléments de la barre de navigation */
+    }
+
+    .classement {
+        padding: 10px; /* Augmenter le rembourrage autour du tableau pour les petits écrans */
+    }
+
+    table {
+        font-size: 12px; /* Réduire la taille de la police pour les petits écrans */
+    }
+}
