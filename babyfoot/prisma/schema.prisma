@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
 }
 
 datasource db {
@@ -10,28 +10,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id        Int    @id @default(autoincrement())
-  nom       String @db.VarChar(255)
-  role      String @default("joueur") @db.VarChar(255)
-  mail      String @unique
-  password  String @db.VarChar(255)
-  buts      Int    @default(0)
-  victoires Int    @default(0)
+// schema.prisma
+
+model User {
+  id    Int     @id @default(autoincrement())
+  nom   String  @db.VarChar(255) 
+  role  String  @db.VarChar(255) @default("user") // user ou admin
+  password  String  @db.VarChar(255)
+  buts  Int     @default(0)
+  email String  @unique
+  victoires Int     @default(0)
+  games UserGame[] @relation("UserGames")
 }
 
-model Games {
-  id          Int      @id @default(autoincrement())
-  date        DateTime @default(now())
-  adversaire1 Int
-  adversaire2 Int
-  score1      Int      @default(0)
-  score2      Int      @default(0)
-  babyfoot    Int      @default(0)
-  etat        String   @db.VarChar(255)
+model Game {
+  id             Int      @id @default(autoincrement())
+  date           DateTime @default(now())
+  score1         Int      @default(0)
+  score2         Int      @default(0)
+  babyfootId     Int
+  etat           String   @db.VarChar(255) @default("En Cours")
+  babyfoot       Babyfoot @relation(fields: [babyfootId], references: [id])
+  userGames UserGame[] @relation("UserGames")
+}
+
+model UserGame {
+  userId Int
+  gameId Int
+  role   String @db.VarChar(255) // joueur ou adversaire
+  user   User  @relation("UserGames", fields: [userId], references: [id])
+  game   Game  @relation("UserGames", fields: [gameId], references: [id])
+
+  @@id([userId, gameId])
 }
 
 model Babyfoot {
-  id           Int    @id @default(autoincrement())
-  localisation String @db.VarChar(255)
+  id          Int     @id @default(autoincrement())
+  localisation String  @db.VarChar(255) @unique
+  games       Game[]
 }
