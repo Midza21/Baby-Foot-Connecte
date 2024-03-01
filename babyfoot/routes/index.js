@@ -16,6 +16,18 @@ router.get("/get_users", async (req, res) => {
   res.status(200).json(allUsers);
 });
 
+router.get("/joueurs", async (req, res) => {
+  res.render("joueurs");
+});
+
+router.get("/creategame", async (req, res) => {
+  res.render("creategame");
+});
+
+router.get("/babyfoot", async (req, res) => {
+  res.render("babyfoot");
+});
+
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
   try {
@@ -139,13 +151,13 @@ router.get("/get_babyfoot/:id", async (req, res) => {
 
 // Crée un nouveau user avec les données du formulaire
 router.post("/new_user", async (req, res) => {
-  const { nom, email, password, } = req.body;
+  const { nom, email, mot_de_passe, } = req.body;
   const result = await prisma.user.create({
     
     data: {
       nom: nom,
       email : email,
-      password: createHmac('sha256', password).update('I love cupcakes').digest('hex'),        
+      password: createHmac('sha256', mot_de_passe).update('I love cupcakes').digest('hex'),        
     },
   });
   res.json(result);
@@ -153,6 +165,7 @@ router.post("/new_user", async (req, res) => {
 // Crée un nouveau Game avec les données du formulaire
 router.post("/new_game", async (req, res) => {
   try {
+    console.log(req.body);
     const { emailJoueur, emailAdversaire, localisationBabyfoot } = req.body;
 
     // On vérifie que le nom du joueur, de l'adversaire et de la localisation du babyfoot ne sont pas vides

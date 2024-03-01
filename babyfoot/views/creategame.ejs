@@ -90,9 +90,10 @@
         const babyfootSelect = document.getElementById("babyfoot");
         const joueursContainer = document.getElementById("joueursContainer");
         const form = document.querySelector("form");
+        console.log(babyfootSelect);
 
         // Effectuer une requête AJAX pour récupérer la liste des babyfoots depuis le serveur
-        fetch("/babyfoots")
+        fetch("/get_babyfoots")
           .then((response) => response.json())
           .then((babyfoots) => {
             // Créer une option pour chaque babyfoot
@@ -101,6 +102,7 @@
               option.value = babyfoot.id;
               option.text = babyfoot.localisation;
               babyfootSelect.add(option);
+              console.log(babyfoot);
             });
           })
           .catch((error) =>
@@ -114,7 +116,7 @@
           .getElementById("btnAjouterJoueurs")
           .addEventListener("click", function () {
             // Effectuer une requête AJAX pour récupérer la liste des joueurs depuis le serveur
-            fetch("/users")
+            fetch("/get_users")
               .then((response) => response.json())
               .then((players) => {
                 // Créer une liste déroulante pour chaque joueur
@@ -159,6 +161,10 @@
           const adversaire2Select = document.querySelector(
             'select[name="joueur[]"]:nth-child(2)'
           );
+          const babyfootSelect = document.getElementById("babyfoot"); // Ajout de cette ligne
+            console.log(adversaire1Select.value);
+            console.log(adversaire2Select.value);
+            console.log(babyfootSelect.value); // Ajout de cette ligne
           const babyfoot = parseInt(babyfootSelect.value, 10); // Convertir en entier
 
           // Vérifier que les deux joueurs sont sélectionnés
