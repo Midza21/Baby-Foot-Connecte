@@ -127,8 +127,7 @@
 
     async function deleteDevice() {
         const id = document.getElementById("idUtilisateur").value;
-        console.log(id)
-  console.log("ID du utilisateur à supprimer :", id);
+        
   
   try {
     const response = await fetch(`/delete_user/${id}`, { // Utilisation de l'ID saisi par l'utilisateur dans l'URL de la requête
@@ -136,18 +135,18 @@
     });
     
     if (response.ok) {
-      const deletedDevice = await response.json();
-      console.log("Dispositif supprimé :", deletedDevice);
-      alert("Dispositif supprimé avec succès !");
+      const deletedUser = await response.json();
+      console.log("User supprimé :", deletedUser);
+      alert("User supprimé avec succès !");
       window.location.href = "admin"; // Rediriger vers une autre page après la suppression
     } else {
       const errorMessage = await response.text();
-      console.error("Erreur lors de la suppression du dispositif :", errorMessage);
-      alert("Une erreur s'est produite lors de la suppression du dispositif. Veuillez réessayer plus tard.");
+      console.error("Erreur lors de la suppression du User :", errorMessage);
+      alert("Une erreur s'est produite lors de la suppression du User. Veuillez réessayer plus tard.");
     }
   } catch (error) {
-    console.error("Erreur lors de la suppression du dispositif :", error);
-    alert("Une erreur s'est produite lors de la suppression du dispositif. Veuillez réessayer plus tard.");
+    console.error("Erreur lors de la suppression du User :", error);
+    alert("Une erreur s'est produite lors de la suppression du User. Veuillez réessayer plus tard.");
   }
 }
 </script>

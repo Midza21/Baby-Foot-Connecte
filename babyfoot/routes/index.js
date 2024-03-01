@@ -84,13 +84,15 @@ router.get("/get_babyfoot/:id", async (req, res) => {
 
 // Crée un nouveau user avec les données du formulaire
 router.post("/new_user", async (req, res) => {
-  const { nom, email, password, } = req.body;
+  const { nom, email, password} = req.body;
   const result = await prisma.users.create({
     
     data: {
       nom: nom,
       email : email,
-      password: createHmac('sha256', password).update('I love cupcakes').digest('hex'),        
+      password: createHmac('sha256', password).update('I love cupcakes').digest('hex'),   
+      // buts : buts,
+      // victoires : victoires,     
     },
   });
   res.json(result);
@@ -122,7 +124,7 @@ router.post("/new_babyfoot", async (req, res) => {
 });
 
 // Supprimer un user avec son ID
-router.post("/delete_user/:id", async (req, res) => {
+router.delete("/delete_user/:id", async (req, res) => {
   try {
       const userId = parseInt(req.params.id, 10);
       const userExist = await prisma.users.findUnique({
@@ -132,18 +134,24 @@ router.post("/delete_user/:id", async (req, res) => {
     {
       return res.status(404).json({ erreur: 'User non trouvée' });
     }
-    await prisma.users.delete({
-      where: { id: userId },
-    });
+    else{
+
+      await prisma.users.delete({
+        where: { id: userId },
+      });
+      res.status(200).json(userExist);
+    }
+   
   }
   catch (error) {
     console.error(error);
     res.status(500).json({ erreur: 'Erreur lors de la suppression du user' });
   }
+  
 });
 
 // Supprimer une Partie avec son ID
-router.post("/delete_game/:id", async (req, res) => {
+router.delete("/delete_game/:id", async (req, res) => {
     try {
         const gameId = parseInt(req.params.id, 10);
         const gameExist = await prisma.games.findUnique({
@@ -164,7 +172,7 @@ router.post("/delete_game/:id", async (req, res) => {
   });
 
   // Supprimer une entité avec son ID
-router.post("/delete_babyfoot/:id", async (req, res) => {
+router.delete("/delete_babyfoot/:id", async (req, res) => {
     try {
         const babyfootId = parseInt(req.params.id, 10);
         const babyfootExist = await prisma.babyfoot.findUnique({

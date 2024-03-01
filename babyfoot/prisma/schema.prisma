@@ -28,7 +28,7 @@ model Game {
   babyfootId     Int
   etat           String   @db.VarChar(255) @default("En Cours")
   babyfoot       Babyfoot @relation(fields: [babyfootId], references: [id])
-  userGames UserGame[] @relation("UserGames")
+  userGames      UserGame[] @relation("UserGames")
 }
 
 model UserGame {
