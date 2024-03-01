@@ -80,8 +80,8 @@
                 <a href="#">Utilisateur</a>
                 <ul class="submenu">
                   <li><a href="utilisateur_supprimer" onclick="loadContent('utilisateur_supprimer')">Supprimer un utilsateur</a></li>
-                  <li><a href="#">Modifier un utilsateur</a></li>
-                  <li><a href="#">Voir les utilsateur</a></li>
+                  <li><a href="utilisateur_modifier" onclick="loadContent('utilisateur_modifier')">Modifier un utilsateur</a></li>
+                  <li><a href="voir_utilisateur" onclick="loadContent('voir_utilisateur')">Voir les utilsateur</a></li>
                 </ul>
               </li>
           <li>
@@ -125,7 +125,7 @@
   }
 
 
-    async function deleteDevice() {
+    async function deleteUser() {
         const id = document.getElementById("idUtilisateur").value;
         
   
@@ -148,5 +148,86 @@
     console.error("Erreur lors de la suppression du User :", error);
     alert("Une erreur s'est produite lors de la suppression du User. Veuillez réessayer plus tard.");
   }
+}
+
+
+
+async function submitForm() {
+  const id = document.getElementById("idModif").value;
+  const nom = document.getElementById("nom").value;
+  const email = document.getElementById("email").value;
+  const buts = parseInt(document.getElementById("buts").value);
+const victoires = parseInt(document.getElementById("victoires").value);
+
+  const role = document.getElementById("role").value;
+  
+  
+  try {
+    const response = await fetch(`/update_useradmin/${id}`, { // Utilisation de l'ID saisi par l'utilisateur dans l'URL de la requête
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ nom, email,buts,victoires,role })
+    });
+    
+    const updatedUser = await response.json();
+    console.log(updatedUser);
+    
+    alert("user mis à jour avec succès !");
+    window.location.href = "admin"; 
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du user :", error);
+    alert("Une erreur s'est produite lors de la mise à jour du user. Veuillez réessayer plus tard.");
+  }
+}
+
+//------------------------------------------------------------------------------
+
+async function showUserTable() {
+  try {
+    const response = await fetch("/get_user");
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des users.");
+    }
+    const user = await response.json();
+    displayUserTable(user);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des users :", error);
+    alert("Une erreur s'est produite lors de la récupération des users. Veuillez réessayer plus tard.");
+  }
+}
+
+function displayUserTable(user) {
+  const tableBody = document.getElementById("userTableBody");
+  tableBody.innerHTML = ""; // Nettoyer le contenu précédent
+  
+  user.forEach(user => {
+    const row = document.createElement("tr");
+    const idCell = document.createElement("td");
+    const nomCell = document.createElement("td");
+    const emailCell= document.createElement("td");
+    const butCell= document.createElement("td");
+    const victoiresCell= document.createElement("td");
+    const roleCell= document.createElement("td");
+    
+    idCell.textContent = user.id;
+    nomCell.textContent = user.nom;
+    emailCell.textContent = user.email;
+    butCell.textContent = user.buts;
+    victoiresCell.textContent = user.victoires;
+    roleCell.textContent = user.role;
+
+    
+    row.appendChild(idCell);
+    row.appendChild(nomCell);
+    row.appendChild(emailCell);
+    row.appendChild(butCell);
+    row.appendChild(victoiresCell);
+    row.appendChild(roleCell);
+
+    
+    tableBody.appendChild(row);
+  });
 }
 </script>

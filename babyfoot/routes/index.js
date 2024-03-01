@@ -39,6 +39,15 @@ router.get('/utilisateur_supprimer', function(req, res, next) {
   res.render('utilisateur_supprimer', { title: 'Express' });
 });
 
+//retourne a la vue modifier pour l'admin
+router.get('/utilisateur_modifier', function(req, res, next) {
+  res.render('utilisateur_modifier', { title: 'Express' });
+});
+
+//retourne a la vue voir pour l'admin
+router.get('/voir_utilisateur', function(req, res, next) {
+  res.render('voir_utilisateur', { title: 'Express' });
+});
 
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
@@ -51,6 +60,14 @@ router.get("/get_babyfoots", async (req, res) => {
     const allBabyfoot = await prisma.babyfoot.findMany({});
     res.status(200).json(allBabyfoot);
   });
+
+// Retourne tous les Babyfoot de la base
+router.get("/get_user", async (req, res) => {
+  const allUser = await prisma.user.findMany({});
+  res.status(200).json(allUser);
+});
+
+
 
 // Retourne l'utilisateur avec l'id spécifié
 router.get("/get_user/:id", async (req, res) => {
@@ -84,15 +101,15 @@ router.get("/get_babyfoot/:id", async (req, res) => {
 
 // Crée un nouveau user avec les données du formulaire
 router.post("/new_user", async (req, res) => {
-  const { nom, email, password} = req.body;
+  const { nom, email, password,buts,victoires} = req.body;
   const result = await prisma.user.create({
     
     data: {
       nom: nom,
       email : email,
       password: createHmac('sha256', password).update('I love cupcakes').digest('hex'),   
-      // buts : buts,
-      // victoires : victoires,     
+      buts : buts,
+      victoires : victoires,     
     },
   });
   res.json(result);
@@ -253,6 +270,43 @@ router.put("/update_user/:id", async (req, res) => {
       res.status(500).json({ erreur: 'Erreur lors de la mise à jour du user' });
     }
   });
+
+
+  // Mettre à jour un user par son Id
+router.put("/update_useradmin/:id", async (req, res) => {
+  
+  try {
+    const userId = parseInt(req.params.id, 10);
+    const { nom, email, password,buts,victoires,role  } = req.body;
+
+    const userExist = await prisma.user.findUnique({
+        where : {id: userId},
+    });
+    if(! userExist)
+    {
+      return res.status(404).json({ erreur: 'User non trouvée' });
+    }
+
+    const userUpdate = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        nom,
+        email,
+        password,
+        buts,
+        victoires,
+        role,
+
+      },
+    });
+
+    res.status(200).json(userUpdate);
+  } catch (error)
+  {
+    console.error(error);
+    res.status(500).json({ erreur: 'Erreur lors de la mise à jour du user' });
+  }
+});
 
   // Mettre à jour game par son Id
 router.put("/update_game/:id", async (req, res) => {
