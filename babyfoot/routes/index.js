@@ -31,6 +31,7 @@ router.get("/classement", async (req, res) => {
 // retourne a la vue admin
 
 router.get('/admin', function(req, res, next) {
+  
   res.render('admin', { title: 'Express' });
 });
 
@@ -54,6 +55,9 @@ router.get("/get_games", async (req, res) => {
   const allGames = await prisma.game.findMany({});
   res.status(200).json(allGames);
 });
+
+
+//---------------------------------------------------- Wael
 
 // Retourne tous les Babyfoot de la base
 router.get("/get_babyfoots", async (req, res) => {
