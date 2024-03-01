@@ -95,3 +95,13 @@ Brouillon :
 
 * ID
 * LOCALISATION 
+
+# REDME SAID
+## Ce que j'ai fait:
+* changement de la db
+* création d'un nouveau db intermédiaire
+* On ne peut pas supprimer un user qui a déjà jouer une partie
+## Ce que je dois faire
+* il faut que je test la fonction delete sur les tables
+* je n'ai pas encors mis au courant l'équipe sur la decentralisation des tables
+* Il faut que je refléchisse un moyen, de tel sorte que si on supprime un user, on supprime aussi la partie
