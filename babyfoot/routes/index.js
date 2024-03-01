@@ -3,14 +3,19 @@ var router = express.Router();
 const  {PrismaClient} =  require("@prisma/client") 
 const  {createHmac} = require('node:crypto');
 const { empty } = require('@prisma/client/runtime/library');
+<<<<<<< HEAD
 
 const prisma = new PrismaClient();
+=======
+>>>>>>> origin/said
 
+const prisma = new PrismaClient();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+<<<<<<< HEAD
 // Retourne a la vue classement
 router.get("/classement", async (req, res) => {
   try {
@@ -40,6 +45,14 @@ router.get('/utilisateur_supprimer', function(req, res, next) {
 });
 
 
+=======
+// Retourne tous les users de la base
+router.get("/get_users", async (req, res) => {
+  const allUsers = await prisma.users.findMany({});
+  res.status(200).json(allUsers);
+});
+
+>>>>>>> origin/said
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
   const allGames = await prisma.games.findMany({});
@@ -219,10 +232,17 @@ router.put("/update_user/:id", async (req, res) => {
   
     try {
       const userId = parseInt(req.params.id, 10);
+<<<<<<< HEAD
       const { nom, email, password} = req.body;
   
       const userExist = await prisma.users.findUnique({
           where : {id: userId},
+=======
+      const { nom, email, password  } = req.body;
+  
+      const userExist = await prisma.users.findUnique({
+          where : {Id: userId},
+>>>>>>> origin/said
       });
       if(! userExist)
       {
@@ -234,7 +254,11 @@ router.put("/update_user/:id", async (req, res) => {
         data: {
           nom,
           email,
+<<<<<<< HEAD
           password
+=======
+          password,
+>>>>>>> origin/said
         },
       });
   
