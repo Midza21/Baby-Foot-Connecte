@@ -14,13 +14,13 @@ router.get('/', function(req, res, next) {
 // Retourne a la vue classement
 router.get("/classement", async (req, res) => {
   try {
-    const topUsers = await prisma.users.findMany({
+    const topUsers = await prisma.user.findMany({
         orderBy: {
             victoires: 'desc' // Tri par ordre décroissant des victoires
         },
         take: 10 // Limiter les résultats aux 10 premiers utilisateurs
     });
-    res.render('classement', { users: topUsers }); // Rendre la vue avec les 10 premiers utilisateurs
+    res.render('classement', { user: topUsers }); // Rendre la vue avec les 10 premiers utilisateurs
 } catch (error) {
     console.error("Error fetching top users:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -42,7 +42,7 @@ router.get('/utilisateur_supprimer', function(req, res, next) {
 
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
-  const allGames = await prisma.games.findMany({});
+  const allGames = await prisma.game.findMany({});
   res.status(200).json(allGames);
 });
 
@@ -56,7 +56,7 @@ router.get("/get_babyfoots", async (req, res) => {
 router.get("/get_user/:id", async (req, res) => {
   const { id } = req.params;
 
-  const user = await prisma.users.findUnique({
+  const user = await prisma.user.findUnique({
     where: { id: Number(id) },
   });
   res.json(user);
@@ -66,7 +66,7 @@ router.get("/get_user/:id", async (req, res) => {
 router.get("/get_game/:id", async (req, res) => {
   const { id } = req.params;
 
-  const game = await prisma.games.findUnique({
+  const game = await prisma.game.findUnique({
     where: { id: Number(id) },
   });
   res.json(game);
@@ -85,7 +85,7 @@ router.get("/get_babyfoot/:id", async (req, res) => {
 // Crée un nouveau user avec les données du formulaire
 router.post("/new_user", async (req, res) => {
   const { nom, email, password} = req.body;
-  const result = await prisma.users.create({
+  const result = await prisma.user.create({
     
     data: {
       nom: nom,
@@ -101,7 +101,7 @@ router.post("/new_user", async (req, res) => {
 // Crée un nouveau Game avec les données du formulaire
 router.post("/new_game", async (req, res) => {
     const { adversaire1, adversaire2, babyfoot, etat} = req.body;
-    const result = await prisma.games.create({
+    const result = await prisma.game.create({
       data: {
         adversaire1: adversaire1,
         adversaire2: adversaire2,
@@ -127,7 +127,7 @@ router.post("/new_babyfoot", async (req, res) => {
 router.delete("/delete_user/:id", async (req, res) => {
   try {
       const userId = parseInt(req.params.id, 10);
-      const userExist = await prisma.users.findUnique({
+      const userExist = await prisma.user.findUnique({
         where : {id: userId},
     });
     if(! userExist)
@@ -136,7 +136,7 @@ router.delete("/delete_user/:id", async (req, res) => {
     }
     else{
 
-      await prisma.users.delete({
+      await prisma.user.delete({
         where: { id: userId },
       });
       res.status(200).json(userExist);
@@ -154,14 +154,14 @@ router.delete("/delete_user/:id", async (req, res) => {
 router.delete("/delete_game/:id", async (req, res) => {
     try {
         const gameId = parseInt(req.params.id, 10);
-        const gameExist = await prisma.games.findUnique({
+        const gameExist = await prisma.game.findUnique({
           where : {id: gameId},
       });
       if(! gameExist)
       {
         return res.status(404).json({ erreur: 'Partie non trouvée' });
       }
-      await prisma.games.delete({
+      await prisma.game.delete({
         where: { id: gameId },
       });
     }
@@ -229,7 +229,7 @@ router.put("/update_user/:id", async (req, res) => {
       const userId = parseInt(req.params.id, 10);
       const { nom, email, password  } = req.body;
   
-      const userExist = await prisma.users.findUnique({
+      const userExist = await prisma.user.findUnique({
           where : {Id: userId},
       });
       if(! userExist)
@@ -237,7 +237,7 @@ router.put("/update_user/:id", async (req, res) => {
         return res.status(404).json({ erreur: 'User non trouvée' });
       }
   
-      const userUpdate = await prisma.users.update({
+      const userUpdate = await prisma.user.update({
         where: { id: userId },
         data: {
           nom,
@@ -261,7 +261,7 @@ router.put("/update_game/:id", async (req, res) => {
       const gameId = parseInt(req.params.id, 10);
       const { adversaire1, adversaire2, score1, score2, babyfoot, etat} = req.body;
   
-      const gameExist = await prisma.games.findUnique({
+      const gameExist = await prisma.game.findUnique({
           where : {Id: gameId},
       });
       if(! gameExist)
@@ -269,7 +269,7 @@ router.put("/update_game/:id", async (req, res) => {
         return res.status(404).json({ erreur: 'game non trouvée' });
       }
   
-      const gameUpdate = await prisma.games.update({
+      const gameUpdate = await prisma.game.update({
         where: { id: gameId },
         data: {
           adversaire1,
