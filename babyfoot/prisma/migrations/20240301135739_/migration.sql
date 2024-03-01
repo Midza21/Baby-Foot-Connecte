@@ -1,16 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `games` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `users` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE `games`;
-
--- DropTable
-DROP TABLE `users`;
-
 -- CreateTable
 CREATE TABLE `User` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
@@ -44,6 +31,15 @@ CREATE TABLE `UserGame` (
     `role` VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (`userId`, `gameId`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Babyfoot` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `localisation` VARCHAR(255) NOT NULL,
+
+    UNIQUE INDEX `Babyfoot_localisation_key`(`localisation`),
+    PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- AddForeignKey
