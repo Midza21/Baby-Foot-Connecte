@@ -115,7 +115,7 @@
 
         <body>
             <div class="login-box">
-                <form>
+                <form action="/login" method="post"> 
                     <div class="user-box">
                         <input type="text" id="email" name="email" required="">
                         <label>Identifiant</label>
@@ -127,14 +127,14 @@
                     </div>
 
                     <center>  
-                        <button type="submit" class="btn" onclick="connexion()">
+                        <button type="submit" class="btn">
                             <%= title %>
                         </button>   
                     </center>
                 </form>
             </div>
-<!-- 
-            <form>
+
+            <!-- <form action="/login" method="post">
                 <div class="form-group">
                     <label for="nom">identifiant</label>
                     <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer votre email ...">
@@ -145,10 +145,10 @@
                     <input type="password" class="form-control" id="password" name="password" placeholder="Entrer votre mot de passe ...">
                 </div>
 
-                <button type="submit" class="btn btn-primary" onclick="connexion()"><%= title %></button>
+                <button type="submit" class="btn btn-primary"><%= title %></button>
             </form> -->
 
-            <script>
+            <!-- <script>
                 function connexion() {
                     const user = document.getElementById('email').value;
                     const password = document.getElementById('password').value;

@@ -1,18 +1,18 @@
 var express = require('express');
 var router = express.Router();
-const  {PrismaClient} =  require("@prisma/client") 
+const  { PrismaClient } =  require("@prisma/client") 
 const  {createHmac} = require('node:crypto');
 const { empty } = require('@prisma/client/runtime/library');
+// const bodyParser = require('body-parser');
 
 const prisma = new PrismaClient();
-const app = express();
-app.use(express.static("public"));
 
-// Retourne tous les users de la base
-app.get("/users", async (req, res) => {
-  const allUsers = await prisma.users.findMany({});
-  res.status(200).json(allUsers);
+// Connexion à la page de Connexion de l'application
+
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Connexion' });
 });
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -162,11 +162,13 @@ router.post("/new_user", async (req, res) => {
       email : email,
       password: password 
       ? createHmac('sha256', password).update('667 Ekip !').digest('hex') :"",  
-      role: "joueur",
+      role: "joueur", 
     },
   });
   res.json(result);
 });
+
+
 // Crée un nouveau Game avec les données du formulaire
 router.post("/new_game", async (req, res) => {
   try {
@@ -243,7 +245,7 @@ router.post("/new_babyfoot", async (req, res) => {
 });
 
 // Supprimer un user avec son ID
-router.post("/delete_user/:id", async (req, res) => {
+router.delete("/delete_user/:id", async (req, res) => {
   try {
       const userId = parseInt(req.params.id, 10);
       const userExist = await prisma.user.findUnique({
@@ -265,7 +267,7 @@ router.post("/delete_user/:id", async (req, res) => {
 
 
 // Supprimer une Partie avec son ID
-router.post("/delete_game/:id", async (req, res) => {
+router.delete("/delete_game/:id", async (req, res) => {
     try {
         const gameId = parseInt(req.params.id, 10);
         const gameExist = await prisma.games.findUnique({
@@ -286,7 +288,7 @@ router.post("/delete_game/:id", async (req, res) => {
   });
 
   // Supprimer une entité avec son ID
-router.post("/delete_babyfoot/:id", async (req, res) => {
+router.delete("/delete_babyfoot/:id", async (req, res) => {
     try {
         const babyfootId = parseInt(req.params.id, 10);
         const babyfootExist = await prisma.babyfoot.findUnique({
@@ -490,11 +492,54 @@ router.delete("/delete_usergame/:userId/:gameId", async (req, res) => {
   }
 });
 
+// Page de connexion
+router.get('/login', (req, res) => {
+  res.render("login");
+});
 
+// Gestion de la soumission du formulaire de connexion
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
 
-// Lancement du serveur
-app.listen(3000, () => {
-  console.log("Serveur à l'écoute sur le port 3000");
+  // Vérification des informations d'identification dans la base de données
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+      password: String(password),
+    }
+  });
+
+  
+
+  if (user) {
+    console.log(user);
+    // Création d'une session utilisateur
+    const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
+    // Comparaison du mot de passe haché avec celui stocké dans la base de données
+    if (hashedPassword === user.password){
+      req.session.user = user.password;
+      res.redirect('/menu');
+    } 
+    else {
+      res.send('Identifiants incorrects !');
+    }
+  }
+  else {
+    res.send('Identifiants incorrects.');
+  }
+});
+
+// Page du menu (redirection après une connexion réussie)
+router.get('/menu', (req, res) => {
+  console.log(req.session);
+  if (req.session.user) {
+    return res.render("menu");
+    
+    // res.send('Bienvenue sur la page du menu.');
+  } else {
+    return res.redirect('/login');
+    
+  }
 });
  
 
