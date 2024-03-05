@@ -44,6 +44,8 @@ ou
 
 ESP32 10€ : https://www.amazon.fr/AZDelivery-Development-successeur-Compatible-incluant/dp/B071P98VTG/ref=asc_df_B071P98VTG/?tag=googshopfr-21&linkCode=df0&hvadid=194939354820&hvpos=&hvnetw=g&hvrand=3325158748750025302&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9056593&hvtargid=pla-367709801435&mcid=3c2144aa0c7c390d949675158d869029&th=1
 
+Lien Baby-foot: https://www.amazon.fr/HLC-Baby-Foot-r%C3%A9tractable-r%C3%A9cr%C3%A9atifs-dint%C3%A9rieur/dp/B09XDRKD9J/ref=sr_1_6?dib=eyJ2IjoiMSJ9._om8tsVPKHyLR6vPYxHZut9sTtUfVZGb0raFJsMAEuL3W_1giWImx4d1CgatnD5sN_NnUUjj29AcDjyeZnDgxV5siOqzS6iItzZLIYtjSV_CfPEEZQ70gQhj3Wu39xnhJ1ooJ-UC2dZ5wcVroCyB2jZatyHFHY_u_B_LTdvRtZDSVQHWDFCPyuwn79lgz997_0zBcbsivAJZX_-eWdJIx33AqD_BCQhIRBYp4pPCSjHkDyrzyh67NRCTmYVTYw-ocT-4ckbd5HMuiBFvBsA4fecUbgqDESt8ffO4hg2X4ug.QMPClBbzx6Gyb1nYhNiK_N1tBZA95XKIF8s6myw3UBY&dib_tag=se&keywords=baby%2Bfoot&qid=1709215440&sr=8-6&ufe=app_do%3Aamzn1.fos.49fccda8-a887-4188-817b-b9a64bb30e43&th=1
+
 **Technologies utilisée :** 
 
 * Node Js 
