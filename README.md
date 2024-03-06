@@ -101,5 +101,7 @@ Brouillon :
 
 **Taches**:
 
-* Ruban Led
-* Ecran avec la rasbery 
+* Installer Rasberry pi (Mohammed)
+* esp 32 , lasers , led + connexion esp à rasperry (Iliaes + Said)
+* App node , Mysql rasberry pi ...(Wael)
+* 
