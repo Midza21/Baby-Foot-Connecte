@@ -1,0 +1,427 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+body {
+    font-family: American Typewriter, serif;
+    margin: 0;
+    padding: 0;
+}
+html {
+  height: 100%;
+  background-color: #f8f8f8;
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+.nav-links li a:hover {
+    color: #ffcc00; /* Changement de couleur lors du survol */
+}
+.classement {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover{
+    background-color: rgb(196, 214, 192);
+}
+
+
+
+
+/* Vos styles existants restent les mêmes */
+
+/* Ajoutez des styles pour la responsivité */
+@media only screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin-right: 10px;
+    }
+
+    .classement {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px; /* Réduire la taille de la police pour les petits écrans */
+    }
+}
+
+/* Vos styles existants restent les mêmes */
+
+/* Ajoutez des styles pour la responsivité des tablettes */
+@media only screen and (max-width: 768px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+/* Ajoutez des styles pour la responsivité des appareils mobiles */
+@media only screen and (max-width: 480px) {
+    .navbar {
+        padding: 5px 0; /* Réduire le rembourrage de la barre de navigation */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Afficher les liens de navigation en colonne */
+        align-items: flex-start;
+    }
+
+    .nav-links li {
+        margin: 5px 0; /* Réduire la marge entre les éléments de la barre de navigation */
+    }
+
+    .classement {
+        padding: 10px; /* Augmenter le rembourrage autour du tableau pour les petits écrans */
+    }
+
+    table {
+        font-size: 12px; /* Réduire la taille de la police pour les petits écrans */
+    }
+}
+.containe{
+    margin-left: 400px;
+}
+
+.button-container {
+    display: flex;
+    background-color: rgb(11 38 60);
+    width: 250px;
+    height: 40px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
+      rgba(27, 133, 219, 0.5) 5px 10px 15px;
+  }
+  
+  .button {
+    outline: 0 !important;
+    border: 0 !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    transform: translateY(-3px);
+  }
+  
+  .icon {
+    font-size: 20px;
+  }
+/* css */
+ul {
+    text-align: center;
+  }
+  ul li {
+    display: inline-block;
+    margin-right: 15px;
+    transition: all 0.3s ease-in-out;
+  }
+  ul li:hover .submenu {
+    height: 85px;
+  }
+  ul li:hover a {
+    color: #6282b3;
+  }
+  ul li:hover a::before {
+    visibility: visible;
+    transform: scale(1, 1);
+  }
+  ul li .submenu {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: #6282b3;
+    height: 0;
+    line-height: 40px;
+    box-sizing: border-box;
+    transition: height 0.3s ease-in-out;
+    transition-delay: 0.1s;
+  }
+  ul li .submenu a {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  ul li .submenu a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  ul li a {
+    color: #999;
+    display: block;
+    padding: 0 7px 0 7px;
+    margin: 0 0 10px;
+    text-decoration: none;
+    position: relative;
+  }
+  ul li a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: -10px;
+    left: 0px;
+    background-color: #6282b3;
+    transition: all 0.2s ease-in-out;
+    transform: scale(0, 0);
+    visibility: hidden;
+  }
+  
+  /*-------Some fancy styling-------*/
+  h1 {
+    text-align: center;
+    font-family: satisfy;
+    font-weight: 300;
+  }
+
+  /* supprimer utilisateur forms*/
+
+  .subscribe {
+    position: relative;
+    height: 140px;
+    width: 240px;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 4px;
+    color: #333;
+    box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+    margin-left: 550px;
+  }
+  
+  .subscribe:after {
+    position: absolute;
+    content: "";
+    right: -10px;
+    bottom: 18px;
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #1a044e;
+  }
+  
+  .subscribe p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    line-height: 28px;
+  }
+  
+  .subscribe input {
+    position: absolute;
+    bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #d4d4d4;
+    padding: 10px;
+    width: 82%;
+    background: transparent;
+    transition: all .25s ease;
+  }
+  
+  .subscribe input:focus {
+    outline: none;
+    border-bottom: 1px solid #0d095e;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', 'sans-serif';
+  }
+  
+  .subscribe .submit-btn {
+    position: absolute;
+    border-radius: 30px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #0f0092;
+    color: #FFF;
+    padding: 12px 25px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    right: -10px;
+    bottom: -20px;
+    cursor: pointer;
+    transition: all .25s ease;
+    box-shadow: -5px 6px 20px 0px rgba(26, 26, 26, 0.4);
+  }
+  
+  .subscribe .submit-btn:hover {
+    background-color: #07013d;
+    box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
+  }
+
+  /* le css formulaire de supression  */
+
+
+  .form_main {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 560px;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    padding: 30px 30px 30px 30px;
+    box-shadow: 20px -14px 16px 6px rgba(0, 0, 0, 0.062);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .form_main::before {
+    position: absolute;
+    content: "";
+    width: 300px;
+    height: 300px;
+    background-color: rgb(209, 193, 255);
+    transform: rotate(45deg);
+    left: -180px;
+    bottom: 30px;
+    z-index: 1;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
+  }
+  
+.contentTableau{
+  width: 50%;
+  margin-left: 400px;
+}
+
+  .heading {
+    font-size: 2em;
+    color: #2e2e2e;
+    font-weight: 700;
+    margin: 5px 0 10px 0;
+    z-index: 2;
+  }
+  
+  .inputContainer {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+  
+  .inputIcon {
+    position: absolute;
+    left: 3px;
+  }
+  
+  .inputField {
+    width: 100%;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(173, 173, 173);
+    margin: 10px 0;
+    color: black;
+    font-size: .8em;
+    font-weight: 500;
+    box-sizing: border-box;
+    padding-left: 30px;
+  }
+  
+  .inputField:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(199, 114, 255);
+  }
+  
+  .inputField::placeholder {
+    color: rgb(80, 80, 80);
+    font-size: 1em;
+    font-weight: 500;
+  }
+  
+  #button {
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    border: none;
+    background-color: rgb(162, 104, 255);
+    height: 30px;
+    color: white;
+    font-size: .8em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  #button:hover {
+    background-color: rgb(126, 84, 255);
+  }
+  
+  .forgotLink {
+    z-index: 2;
+    font-size: .7em;
+    font-weight: 500;
+    color: rgb(44, 24, 128);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+  }
+  
