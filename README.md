@@ -94,4 +94,10 @@ Brouillon :
 **BabyFoot**
 
 * ID
-* LOCALISATION 
+* LOCALISATION
+
+
+
+Maquette du babyfoot:
+
+
