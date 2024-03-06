@@ -117,3 +117,4 @@ Installation de la raspberry pi sous linux attribution des roles etudes de la ma
 ![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5398.jpg)
 
 
+Il faut que j'installe mysql sur la raspberry node js et tester mon app 
