@@ -105,3 +105,11 @@ Brouillon :
 * il faut que je test la fonction delete sur les tables
 * je n'ai pas encors mis au courant l'équipe sur la decentralisation des tables
 * Il faut que je refléchisse un moyen, de tel sorte que si on supprime un user, on supprime aussi la partie
+## Partie Electronique:
+### Le 05/03/2024
+* J'ai fait éttude sur le type de LED qu'on doit utiliser
+* Et on a choisi le LED ws2812b qui est adressable.
+### Le 06/03/2024
+* On a fait une maquette 3D d'un babyfoot selon le babyfoot bonzini
+* On a décidé sur comment installer le laser. on s'est qu'il sera en bas tout près des buts et il y aura un autre type pour les bruits si par exemple la balle frappe le filet( le carton qui remplace le filet) et sort
+* On a décidé comment doit etre l'écran
