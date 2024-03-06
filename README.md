@@ -110,3 +110,8 @@ Pour l'élaboration de la détection de but nous avons opté pour un laser et un
 ![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5394.jpg)
 
 
+06/03/2024
+
+Installation de la raspberry pi sous linux attribution des roles etudes de la maquette  
+
+
