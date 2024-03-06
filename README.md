@@ -101,3 +101,6 @@ Brouillon :
 **Maquette du babyfoot:**
 
 ![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5396.jpg)
+
+
+À l'aide de cette maquette nous avons pu savoir ou nous allons positionner nos capteurs, ecrant, LED etc...
