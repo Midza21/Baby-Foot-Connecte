@@ -107,4 +107,6 @@ Brouillon :
 
 Pour l'élaboration de la détection de but nous avons opté pour un laser et une photorésistance quand un obstacle coupe le laser le but est validé
 
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5394.jpg)
+
 
