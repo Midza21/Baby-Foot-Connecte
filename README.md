@@ -104,3 +104,7 @@ Brouillon :
 
 
 À l'aide de cette maquette nous avons pu savoir ou nous allons positionner nos capteurs, ecrant, LED etc...
+
+Pour l'élaboration de la détection de but nous avons opté pour un laser et une photorésistance quand un obstacle coupe le laser le but est validé
+
+
