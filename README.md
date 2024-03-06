@@ -113,3 +113,25 @@ Brouillon :
 * On a fait une maquette 3D d'un babyfoot selon le babyfoot bonzini
 * On a décidé sur comment installer le laser. on s'est qu'il sera en bas tout près des buts et il y aura un autre type pour les bruits si par exemple la balle frappe le filet( le carton qui remplace le filet) et sort
 * On a décidé comment doit etre l'écran
+Bien sûr, voici une ébauche de documentation pour votre README sur GitHub :
+
+#### LED Néopixel avec Arduino
+
+##### Matériel nécessaire
+
+- Carte Arduino
+- Bande de LED Néopixel (WS2812B) avec 12 LEDs ( ce qui est présent à la fac)
+- 2 boutons ( rouge et bleu)
+- Résistances pour les boutons
+
+##### Configuration
+
+La bande de LED est connectée au pin 3 de la carte Arduino. Les boutons sont connectés aux pins 4 et 2 pour le bouton rouge et le bouton bleu respectivement.
+
+##### Problèmes connus
+
+Actuellement, le code pour les boutons ne fonctionne pas correctement en raison d'un problème de branchement des résistances.
+
+###### Prochaines étapes
+Le prochain objectif est de résoudre le problème de branchement des boutons pour permettre le contrôle des LEDs avec les boutons.
+
