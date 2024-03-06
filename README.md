@@ -100,4 +100,4 @@ Brouillon :
 
 Maquette du babyfoot:
 
-
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5396.jpg)
