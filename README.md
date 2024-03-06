@@ -101,7 +101,7 @@ Brouillon :
 
 **Taches**:
 
-* Installer Rasberry pi (Mohammed)
-* esp 32 , lasers , led + connexion esp à rasperry (Iliaes + Said)
-* App node , Mysql rasberry pi ...(Wael)
+* Installer raspberry pi   (Mohammed)
+* esp 32 , lasers , led + connexion esp à raspberry pi  (Iliaes + Said)
+* App node , Mysql raspberry pi ...(Wael)
 * 
