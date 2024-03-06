@@ -96,4 +96,10 @@ Brouillon :
 **BabyFoot**
 
 * ID
-* LOCALISATION 
+* LOCALISATION
+
+
+**Taches**:
+
+* Ruban Led
+* Ecran avec la rasbery 
