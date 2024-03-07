@@ -134,4 +134,15 @@ Actuellement, le code pour les boutons ne fonctionne pas correctement en raison 
 
 ###### Prochaines étapes
 Le prochain objectif est de résoudre le problème de branchement des boutons pour permettre le contrôle des LEDs avec les boutons.
+Voici une suggestion de documentation pour votre README sur GitHub :
 
+### Mise à jour du 07 Mars 2024
+
+#### Modifications du code
+Aujourd'hui, j'ai modifié le code pour que les LEDs clignotent de manière festive lorsque l'on appuie sur un bouton, puis s'éteignent lentement.
+
+#### Modifications du branchement
+J'ai également modifié le branchement. Chaque bouton est maintenant connecté à une résistance. Voici une image du nouveau branchement :
+
+### Tâches pour demain
+Demain, je prévois de faire le branchement sur un ESP.
