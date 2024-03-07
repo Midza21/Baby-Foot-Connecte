@@ -105,7 +105,3 @@ Brouillon :
 * esp 32 , lasers , led + connexion esp à raspberry pi  (Iliaes + Said)
 * App node , Mysql raspberry pi ...(Wael)
 
-
-**07/03/2024**
-
-Installation de node mysql prisma sur la raspberry installation de l'app
