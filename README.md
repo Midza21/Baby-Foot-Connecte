@@ -94,4 +94,27 @@ Brouillon :
 **BabyFoot**
 
 * ID
-* LOCALISATION 
+* LOCALISATION
+
+
+
+**Maquette du babyfoot:**
+
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5396.jpg)
+
+
+À l'aide de cette maquette nous avons pu savoir ou nous allons positionner nos capteurs, ecrant, LED etc...
+
+Pour l'élaboration de la détection de but nous avons opté pour un laser et une photorésistance quand un obstacle coupe le laser le but est validé
+
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5394.jpg)
+
+
+06/03/2024
+
+Installation de la raspberry pi sous linux attribution des roles etudes de la maquette  
+
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5398.jpg)
+
+
+Il faut que j'installe mysql sur la raspberry node js et tester mon app 
