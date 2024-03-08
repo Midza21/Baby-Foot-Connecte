@@ -146,3 +146,22 @@ J'ai également modifié le branchement. Chaque bouton est maintenant connecté 
 
 ### Tâches pour demain
 Demain, je prévois de faire le branchement sur un ESP.
+
+### Mise à jour du 08 Mars 2024
+
+Aujourd'hui, j'ai réalisé le branchement de la LED NeoPixel avec ESP32-S3. En collaboration avec Ilaes, nous avons combiné le code pour qu'il fonctionne avec le laser.
+
+#### Problème rencontré
+
+J'ai rencontré un problème spécifique avec l'ESP32-S3. Si je connecte la LED au pin 5, je dois indiquer dans le code que c'est le pin 6. C'est une particularité de l'ESP32-S3 à laquelle je n'étais pas préparé.
+
+De plus, il est important de ne pas oublier de mettre les résistances dans le circuit de la LED pour éviter tout dommage potentiel.
+
+#### Solution
+
+Après avoir identifié le problème, j'ai corrigé le code pour refléter le bon numéro de pin. J'ai également ajouté les résistances nécessaires dans le circuit de la LED.
+
+#### Prochaines étapes
+
+Optimiser le code 
+
