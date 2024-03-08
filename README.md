@@ -114,7 +114,18 @@ Pour l'élaboration de la détection de but nous avons opté pour un laser et un
 
 Installation de la raspberry pi sous linux attribution des roles etudes de la maquette  
 
+
+
 ![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5398.jpg)
 
 
 Il faut que j'installe mysql sur la raspberry node js et tester mon app 
+
+
+
+
+08/03/2024
+
+Finalisation du script npm start reussi 
+problemme au niveau du clavier virtuel essayer avec jquary impossible de le l'integrer au projet 
+manque les pages formulaires de la partie 
