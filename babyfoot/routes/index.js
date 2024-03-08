@@ -86,15 +86,48 @@ router.get("/get_user/:id", async (req, res) => {
   res.json(user);
 });
 
-// Retourne la Partie avec l'id spécifié
-router.get("/get_game/:id", async (req, res) => {
-  const { id } = req.params;
+// Route pour afficher les détails d'une partie individuelle
+router.get("/game/:id", async (req, res) => {
+  try {
+    const gameId = parseInt(req.params.id, 10);
+    const gameDetails = await prisma.game.findUnique({
+      where: { id: gameId },
+    });
 
-  const game = await prisma.game.findUnique({
-    where: { id: Number(id) },
-  });
-  res.json(game);
+    if (!gameDetails) {
+      // Handle the case where the game details are not found
+      return res.status(404).json({ error: "Game not found" });
+    }
+
+    // Récupérez les détails des adversaires à partir des identifiants d'utilisateurs
+    const adversaire1Details = await prisma.user.findUnique({
+      where: { id: gameDetails.adversaire1 },
+    });
+
+    const adversaire2Details = await prisma.user.findUnique({
+      where: { id: gameDetails.adversaire2 },
+    });
+
+    if (!adversaire1Details || !adversaire2Details) {
+      // Handle the case where user details are not found
+      return res.status(404).json({ error: "User details not found" });
+    }
+
+    res.render("game", {
+      gameDetails,
+      adversaire1Details,
+      adversaire2Details,
+    });
+    // Utilisez le nom de votre fichier EJS
+  } catch (error) {
+    console.error("Erreur lors de la récupération des détails de la partie:", error);
+    res.status(500).json({
+      erreur:
+        "Erreur lors de la récupération des détails de la partie",
+    });
+  }
 });
+
 
 // Retourne tous les utilisateurs de la base
 router.get("/get_users", async (req, res) => {
@@ -127,6 +160,7 @@ router.post("/new_user", async (req, res) => {
 
 // Crée un nouveau Game avec les données du formulaire
 router.post("/new_game", async (req, res) => {
+  try{
   const { adversaire1, adversaire2 } = req.body;
   const result = await prisma.game.create({
     data: {
@@ -134,7 +168,11 @@ router.post("/new_game", async (req, res) => {
       adversaire2: adversaire2,
     },
   });
-  res.json(result);
+  res.status(201).json(result);  // Supposons que result contient la partie nouvellement créée
+} catch (error) {
+  console.error("Erreur lors de la création de la partie:", error);
+  res.status(500).json({ erreur: "Erreur lors de la création de la partie" });
+}
 });
 
 // Supprimer un user avec son ID

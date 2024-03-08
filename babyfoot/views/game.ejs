@@ -1,0 +1,71 @@
+<!-- game.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Ajoutez les balises meta, title, et styles nécessaires -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        color: #3498db;
+      }
+
+      .team-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 20px 0;
+      }
+
+      .team {
+        max-width: 200px;
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h3 {
+        color: #e74c3c;
+      }
+
+      p {
+        margin: 10px 0;
+        color: #2c3e50;
+      }
+
+      .score {
+        font-size: 24px;
+        font-weight: bold;
+        color: #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Partie en cours</h2>
+    <span class="score">Score</span>
+
+    <div class="team-container">
+      <div class="team">
+        <h3>Équipe Rouge</h3>
+        <p>Adversaire 1: <%= gameDetails.adversaire1Details?.nom %></p>
+        <p ><%= gameDetails.score1 || 0 %></p>
+      </div>
+
+      <div class="team">
+        <h3 style="color: #3498db;">Équipe Bleue</h3>
+        <p>Adversaire 2: <%= gameDetails.adversaire2Details?.nom %></p>
+        <p ><%= gameDetails.score2 || 0 %></p>
+      </div>
+    </div>
+
+    <!-- Ajoutez d'autres champs pour afficher d'autres détails de la partie si nécessaire -->
+
+  </body>
+</html>
