@@ -89,7 +89,7 @@
             <ul class="submenu">
               <li><a href="#">Supprimer une partie</a></li>
               <li><a href="#">Modifier une partie</a></li>
-              <li><a href="#">Voir les partie</a></li>
+              <li><a href="voir_partie" onclick="loadContent('voir_partie')">Voir les parties</a></li>
             </ul>
           </li>
           
@@ -190,6 +190,73 @@ async function showUserTable() {
     alert("Une erreur s'est produite lors de la récupération des users. Veuillez réessayer plus tard.");
   }
 }
+
+async function showGameTable() {
+  try {
+    const response = await fetch("/get_games");
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des games.");
+    }
+    const game = await response.json();
+    displayGameTable(game);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des games :", error);
+    alert("Une erreur s'est produite lors de la récupération des games. Veuillez réessayer plus tard.");
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------
+
+function displayGameTable(game) {
+  const tableBody = document.getElementById("gameTableBody");
+  tableBody.innerHTML = ""; // Nettoyer le contenu précédent
+  
+  game.forEach(game => {
+    const row = document.createElement("tr");
+    const idCell = document.createElement("td");
+    const dateCell = document.createElement("td");
+    const adversaire1Cell = document.createElement("td");
+    const adversaire2Cell= document.createElement("td");
+    const score1Cell= document.createElement("td");
+    const score2Cell= document.createElement("td");
+    const etatCell= document.createElement("td");
+    const adversaire1DetailsCell= document.createElement("td");
+    const adversaire2DetailsCell= document.createElement("td");
+    const userGamesCell= document.createElement("td");
+    
+
+    idCell.textContent = game.id;
+    dateCell.textContent = game.date;
+    adversaire1Cell.textContent = game.adversaire1;
+    adversaire2Cell.textContent = game.adversaire2;
+    score1Cell.textContent = game.score1;
+    score2Cell.textContent = game.score2;
+    etatCell.textContent = game.etat;
+    adversaire1DetailsCell.textContent = game.adversaire1Details;
+    adversaire2DetailsCell.textContent = game.adversaire2DetailsCell;
+    userGamesCell.textContent = game.userGames;
+    
+
+    
+    row.appendChild(idCell);
+    row.appendChild(dateCell);
+    row.appendChild(adversaire1Cell);
+    row.appendChild(adversaire2Cell);
+    row.appendChild(score1Cell);
+    row.appendChild(score2Cell);
+    row.appendChild(etatCell);
+    row.appendChild(adversaire1DetailsCell);
+    row.appendChild(adversaire2DetailsCell);
+    row.appendChild(userGamesCell);
+
+
+
+    
+    tableBody.appendChild(row);
+  });
+}
+
+
+//-------------------------------------------------------------------------------------------------- user
 
 function displayUserTable(user) {
   const tableBody = document.getElementById("userTableBody");

@@ -56,6 +56,11 @@ router.get("/voir_utilisateur", function (req, res, next) {
   res.render("voir_utilisateur", { title: "Express" });
 });
 
+//retourne a la vue voir les partie
+router.get("/voir_partie", function (req, res, next) {
+  res.render("voir_partie", { title: "Express" });
+});
+
 // Retourne tous les Parties de la base
 router.get("/get_games", async (req, res) => {
   const allGames = await prisma.game.findMany({});
