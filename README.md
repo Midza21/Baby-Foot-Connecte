@@ -129,3 +129,9 @@ Il faut que j'installe mysql sur la raspberry node js et tester mon app
 Finalisation du script npm start reussi 
 problemme au niveau du clavier virtuel essayer avec jquary impossible de le l'integrer au projet 
 manque les pages formulaires de la partie 
+
+26/03/2024
+
+Aujourd'hui j'ai essayer de faire un hotqpot wifi mais je rencontre des problemes à la derniere etape 
+Sinon api installé sur la raspberry 
+Je me suis docummenter sur les forum plus chat gtp impossible de faire fonctionner ce partage 
