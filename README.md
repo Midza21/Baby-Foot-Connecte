@@ -164,4 +164,13 @@ Après avoir identifié le problème, j'ai corrigé le code pour refléter le bo
 #### Prochaines étapes
 
 Optimiser le code 
+## Mise à jour du 26/03/2024
+
+Aujourd'hui, j'ai travaillé avec illaes sur plusieurs tâches :
+0. **L'optimisation du code**
+1. **Refonte du circuit et du code** : Nous avons refait le circuit et le code sur l'ordinateur d'illaes. Nous avons rencontré un problème avec le pin de l'ESP32-S3 qui fonctionnait différemment de ce à quoi nous nous attendions.
+
+2. **Conception du capteur 3D** : Nous avons réfléchi à la manière de réaliser le capteur en 3D.
+
+3. **Problèmes de code** : Nous avons eu des difficultés à faire fonctionner le code sur l'ordinateur d'illaes. Parfois, il fonctionne correctement, mais parfois, il renvoie une erreur de statut 2.
 
