@@ -141,3 +141,4 @@ Je me suis docummenter sur les forum plus chat gtp impossible de faire fonctionn
 apres avoir installer restap ca m'a changé d'environnement 
 j'ai fais un "sudo apt-get autoremove" et plus rien plus de connexion rien 
 meme le localhost je ne peux plus y accéder 
+est ce que je peux faire un back up
