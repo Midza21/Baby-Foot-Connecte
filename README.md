@@ -135,3 +135,9 @@ manque les pages formulaires de la partie
 Aujourd'hui j'ai essayer de faire un hotqpot wifi mais je rencontre des problemes à la derniere etape 
 Sinon api installé sur la raspberry 
 Je me suis docummenter sur les forum plus chat gtp impossible de faire fonctionner ce partage 
+
+27/03/2024
+
+apres avoir installer restap ca m'a changé d'environnement 
+j'ai fais un "sudo apt-get autoremove" et plus rien plus de connexion rien 
+meme le localhost je ne peux plus y accéder 
