@@ -18,10 +18,9 @@ CREATE TABLE `User` (
     `password` VARCHAR(255) NOT NULL,
     `nom` VARCHAR(191) NOT NULL,
     `buts` INTEGER NOT NULL DEFAULT 0,
-    `email` VARCHAR(191) NOT NULL,
+    `email` VARCHAR(255) NOT NULL,
     `victoires` INTEGER NOT NULL DEFAULT 0,
 
-    UNIQUE INDEX `User_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 

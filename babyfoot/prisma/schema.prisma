@@ -28,7 +28,7 @@ model User {
   password  String  @db.VarChar(255)  
   nom      String   
   buts  Int     @default(0)
-  email String  @unique
+  email String  @db.VarChar(255)
   victoires Int     @default(0)
   games1   Game[]   @relation("Adversaire1Details")
   games2   Game[]   @relation("Adversaire2Details")

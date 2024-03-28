@@ -67,6 +67,15 @@ router.get("/get_games", async (req, res) => {
   res.status(200).json(allGames);
 });
 
+// POST route to handle goal scoring from Arduino
+router.post('/goal', (req, res) => {
+  const { buts } = 1;
+  console.log('Goal scored:', buts);
+  // Add your logic to handle the goal scoring event here
+  res.status(200).json({ message: 'Goal scored successfully' });
+});
+
+
 //---------------------------------------------------- Wael
 
 // Retourne tous les Babyfoot de la base
