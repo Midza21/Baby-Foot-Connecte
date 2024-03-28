@@ -75,6 +75,30 @@ router.post('/goal', (req, res) => {
   res.status(200).json({ message: 'Goal scored successfully' });
 });
 
+// Mettre à jour l'état d'une partie à "finie"
+router.post("/finirPartie", async (req, res) => {
+  try {
+    const gameId = parseInt(req.body.gameId);
+
+   
+
+    // Mettez à jour l'état de la partie dans la base de données
+    const updatedGame = await prisma.game.update({
+      where: {
+        id: gameId
+      },
+      data: {
+        etat: "Finie" // Mettez à jour l'état à "Finie"
+      }
+    });
+
+    // Envoyez une réponse JSON pour indiquer que la partie a été mise à jour avec succès
+    res.status(200).json({ message: "La partie a été mise à jour avec succès", updatedGame });
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour de la partie :", error);
+    res.status(500).json({ erreur: "Erreur lors de la mise à jour de la partie" });
+  }
+});
 
 //---------------------------------------------------- Wael
 

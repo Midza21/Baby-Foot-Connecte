@@ -66,6 +66,34 @@
     </div>
 
     <!-- Ajoutez d'autres champs pour afficher d'autres détails de la partie si nécessaire -->
-
+    <button id="endGameButton">Fin de partie</button>
   </body>
+  <script>
+    
+    // Ajoutez un événement clic au bouton "Fin de partie"
+    document.getElementById('endGameButton').addEventListener('click', function() {
+      // Récupérez l'ID de la partie pour l'envoyer au serveur
+      var gameId = '<%= gameDetails.id %>';
+
+      // Envoiez une requête au serveur pour mettre à jour l'état de la partie
+      fetch('/finirPartie', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ gameId: gameId })
+      })
+      .then(response => {
+        if (response.ok) {
+          // Si la requête a réussi, actualisez la page pour refléter le nouvel état de la partie
+          window.location.href = "/creategame";
+        } else {
+          console.error('Erreur lors de la fin de la partie');
+        }
+      })
+      .catch(error => {
+        console.error('Erreur lors de la fin de la partie :', error);
+      });
+    });
+  </script>
 </html>
