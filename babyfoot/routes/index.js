@@ -3,6 +3,7 @@ var router = express.Router();
 const  { PrismaClient } =  require("@prisma/client") 
 const  {createHmac} = require('node:crypto');
 const { empty } = require('@prisma/client/runtime/library');
+const bcrypt = require('bcryptjs');
 // const bodyParser = require('body-parser');
 
 const prisma = new PrismaClient();
@@ -505,27 +506,22 @@ router.post('/login', async (req, res) => {
   const user = await prisma.user.findUnique({
     where: {
       email: email,
-      password: String(password),
     }
   });
-
   
-
   if (user) {
-    console.log(user);
     // Création d'une session utilisateur
-    const hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
+    const passwordMatch = await bcrypt.compare(password, user.password);
     // Comparaison du mot de passe haché avec celui stocké dans la base de données
-    if (hashedPassword === user.password){
-      req.session.user = user.password;
+    if (passwordMatch) {
+      // Authentification réussie, définir l'utilisateur dans la session
+      req.session.user = user;
+      console.log(user);  
       res.redirect('/menu');
     } 
     else {
-      res.send('Identifiants incorrects !');
+      res.send('Identifiants incorrects.');
     }
-  }
-  else {
-    res.send('Identifiants incorrects.');
   }
 });
 
