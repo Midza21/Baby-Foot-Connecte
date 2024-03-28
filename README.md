@@ -94,4 +94,51 @@ Brouillon :
 **BabyFoot**
 
 * ID
-* LOCALISATION 
+* LOCALISATION
+
+
+
+**Maquette du babyfoot:**
+
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5396.jpg)
+
+
+À l'aide de cette maquette nous avons pu savoir ou nous allons positionner nos capteurs, ecrant, LED etc...
+
+Pour l'élaboration de la détection de but nous avons opté pour un laser et une photorésistance quand un obstacle coupe le laser le but est validé
+
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5394.jpg)
+
+
+06/03/2024
+
+Installation de la raspberry pi sous linux attribution des roles etudes de la maquette  
+
+
+
+![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5398.jpg)
+
+
+Il faut que j'installe mysql sur la raspberry node js et tester mon app 
+
+
+
+
+08/03/2024
+
+Finalisation du script npm start reussi 
+problemme au niveau du clavier virtuel essayer avec jquary impossible de le l'integrer au projet 
+manque les pages formulaires de la partie 
+
+26/03/2024
+
+Aujourd'hui j'ai essayer de faire un hotqpot wifi mais je rencontre des problemes à la derniere etape 
+Sinon api installé sur la raspberry 
+Je me suis docummenter sur les forum plus chat gtp impossible de faire fonctionner ce partage 
+
+27/03/2024
+
+apres avoir installer restap ca m'a changé d'environnement 
+j'ai fais un "sudo apt-get autoremove" et plus rien plus de connexion rien 
+meme le localhost je ne peux plus y accéder 
+est ce que je peux faire un back up

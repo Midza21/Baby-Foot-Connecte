@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/admin.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <h1>Classement Baby-Foot</h1>
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="classement">Classement</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="button-container">
+        <button class="button">
+          <svg
+            class="icon"
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 1024 1024"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"
+            ></path>
+          </svg>
+        </button>
+        <button class="button">
+          <svg
+            class="icon"
+            stroke="currentColor"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </button>
+        <button class="button">
+          <svg
+            class="icon"
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+     
+      <nav>
+        <ul>
+            <li>
+                <a href="#">Utilisateur</a>
+                <ul class="submenu">
+                  <li><a href="utilisateur_supprimer" onclick="loadContent('utilisateur_supprimer')">Supprimer un utilsateur</a></li>
+                  <li><a href="utilisateur_modifier" onclick="loadContent('utilisateur_modifier')">Modifier un utilsateur</a></li>
+                  <li><a href="voir_utilisateur" onclick="loadContent('voir_utilisateur')">Voir les utilsateur</a></li>
+                </ul>
+              </li>
+          <li>
+            <a href="#">Partie</a>
+            <ul class="submenu">
+              <li><a href="voir_partie" onclick="loadContent('voir_partie')">Voir les parties</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+      </nav>
+
+      <br> 
+      <div id="content">
+        <!-- Contenu de la page chargée sera affiché ici -->
+      </div>
+</body>
+</html>
+
+<script>
+ function loadContent(url) {
+    // Empêcher le comportement par défaut du lien
+    event.preventDefault();
+  
+    // Charger le contenu de la page cible dans la section de contenu
+    fetch(url)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('content').innerHTML = data;
+      })
+      .catch(error => console.error('Erreur:', error));
+  }
+
+
+    async function deleteUser() {
+        const id = document.getElementById("idUtilisateur").value;
+        
+  
+  try {
+    const response = await fetch(`/delete_user/${id}`, { // Utilisation de l'ID saisi par l'utilisateur dans l'URL de la requête
+      method: "DELETE"
+    });
+    
+    if (response.ok) {
+      const deletedUser = await response.json();
+      console.log("User supprimé :", deletedUser);
+      alert("User supprimé avec succès !");
+      window.location.href = "admin"; // Rediriger vers une autre page après la suppression
+    } else {
+      const errorMessage = await response.text();
+      console.error("Erreur lors de la suppression du User :", errorMessage);
+      alert("Une erreur s'est produite lors de la suppression du User. Veuillez réessayer plus tard.");
+    }
+  } catch (error) {
+    console.error("Erreur lors de la suppression du User :", error);
+    alert("Une erreur s'est produite lors de la suppression du User. Veuillez réessayer plus tard.");
+  }
+}
+
+
+
+async function submitForm() {
+  const id = document.getElementById("idModif").value;
+  const nom = document.getElementById("nom").value;
+  const email = document.getElementById("email").value;
+  const buts = parseInt(document.getElementById("buts").value);
+const victoires = parseInt(document.getElementById("victoires").value);
+
+  const role = document.getElementById("role").value;
+  
+  
+  try {
+    const response = await fetch(`/update_useradmin/${id}`, { // Utilisation de l'ID saisi par l'utilisateur dans l'URL de la requête
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ nom, email,buts,victoires,role })
+    });
+    
+    const updatedUser = await response.json();
+    console.log(updatedUser);
+    
+    alert("user mis à jour avec succès !");
+    window.location.href = "admin"; 
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du user :", error);
+    alert("Une erreur s'est produite lors de la mise à jour du user. Veuillez réessayer plus tard.");
+  }
+}
+
+//------------------------------------------------------------------------------
+
+async function showUserTable() {
+  try {
+    const response = await fetch("/get_user");
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des users.");
+    }
+    const user = await response.json();
+    displayUserTable(user);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des users :", error);
+    alert("Une erreur s'est produite lors de la récupération des users. Veuillez réessayer plus tard.");
+  }
+}
+
+async function showGameTable() {
+  try {
+    const response = await fetch("/get_games");
+    if (!response.ok) {
+      throw new Error("Erreur lors de la récupération des games.");
+    }
+    const game = await response.json();
+    displayGameTable(game);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des games :", error);
+    alert("Une erreur s'est produite lors de la récupération des games. Veuillez réessayer plus tard.");
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------
+
+function displayGameTable(game) {
+  const tableBody = document.getElementById("gameTableBody");
+  tableBody.innerHTML = ""; // Nettoyer le contenu précédent
+  
+  game.forEach(game => {
+    const row = document.createElement("tr");
+    const idCell = document.createElement("td");
+    const dateCell = document.createElement("td");
+    const adversaire1Cell = document.createElement("td");
+    const adversaire2Cell= document.createElement("td");
+    const score1Cell= document.createElement("td");
+    const score2Cell= document.createElement("td");
+    const etatCell= document.createElement("td");
+    const adversaire1DetailsCell= document.createElement("td");
+    const adversaire2DetailsCell= document.createElement("td");
+    const userGamesCell= document.createElement("td");
+    
+
+    idCell.textContent = game.id;
+    dateCell.textContent = game.date;
+    adversaire1Cell.textContent = game.adversaire1;
+    adversaire2Cell.textContent = game.adversaire2;
+    score1Cell.textContent = game.score1;
+    score2Cell.textContent = game.score2;
+    etatCell.textContent = game.etat;
+    adversaire1DetailsCell.textContent = game.adversaire1Details;
+    adversaire2DetailsCell.textContent = game.adversaire2DetailsCell;
+    userGamesCell.textContent = game.userGames;
+    
+
+    
+    row.appendChild(idCell);
+    row.appendChild(dateCell);
+    row.appendChild(adversaire1Cell);
+    row.appendChild(adversaire2Cell);
+    row.appendChild(score1Cell);
+    row.appendChild(score2Cell);
+    row.appendChild(etatCell);
+    row.appendChild(adversaire1DetailsCell);
+    row.appendChild(adversaire2DetailsCell);
+    row.appendChild(userGamesCell);
+
+
+
+    
+    tableBody.appendChild(row);
+  });
+}
+
+
+//-------------------------------------------------------------------------------------------------- user
+
+function displayUserTable(user) {
+  const tableBody = document.getElementById("userTableBody");
+  tableBody.innerHTML = ""; // Nettoyer le contenu précédent
+  
+  user.forEach(user => {
+    const row = document.createElement("tr");
+    const idCell = document.createElement("td");
+    const nomCell = document.createElement("td");
+    const emailCell= document.createElement("td");
+    const butCell= document.createElement("td");
+    const victoiresCell= document.createElement("td");
+    const roleCell= document.createElement("td");
+    
+    idCell.textContent = user.id;
+    nomCell.textContent = user.nom;
+    emailCell.textContent = user.email;
+    butCell.textContent = user.buts;
+    victoiresCell.textContent = user.victoires;
+    roleCell.textContent = user.role;
+
+    
+    row.appendChild(idCell);
+    row.appendChild(nomCell);
+    row.appendChild(emailCell);
+    row.appendChild(butCell);
+    row.appendChild(victoiresCell);
+    row.appendChild(roleCell);
+
+    
+    tableBody.appendChild(row);
+  });
+}
+</script>
+
