@@ -68,13 +68,42 @@ router.get("/get_games", async (req, res) => {
 });
 
 // POST route to handle goal scoring from Arduino
-router.post('/goal', (req, res) => {
-  const { buts } = 1;
-  console.log('Goal scored:', buts);
-  // Add your logic to handle the goal scoring event here
-  res.status(200).json({ message: 'Goal scored successfully' });
-});
+router.post('/goal', async (req, res) => {
+  const {equipe} = req.body; // récupère l'équipe à partir de la requête
+  console.log('Goal :', equipe);
+  let message = '';
 
+  // Fetch the game that is currently in progress
+  const game = await prisma.game.findFirst({
+    where: {
+      etat: 'En Cours'
+    }
+  });
+
+  // If no game is in progress, return
+  if (!game) {
+    res.status(404).json({ message: 'No game in progress.' });
+    return;
+  }
+
+  // Update the score based on which team scored
+  if (equipe === 'bleus') {
+    await prisma.game.update({
+      where: { id: game.id },
+      data: { score1: game.score1 + 1 }
+    });
+    message = 'Equipe bleu a marqué';
+  } else {
+    await prisma.game.update({
+      where: { id: game.id },
+      data: { score2: game.score2 + 1 }
+    });
+    message = 'Equipe rouge a marqué';
+  }
+  //console.log('Goal scored:', buts);
+  console.log(message);
+  res.status(200).json({ message: message });
+});
 // Mettre à jour l'état d'une partie à "finie"
 router.post("/finirPartie", async (req, res) => {
   try {

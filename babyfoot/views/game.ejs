@@ -95,5 +95,12 @@
         console.error('Erreur lors de la fin de la partie :', error);
       });
     });
+    // Fonction pour recharger la fenêtre
+    function reloadWindow() {
+    window.location.reload(true); // Recharge la fenêtre
+    }
+
+  // Appeler la fonction reloadWindow toutes les 5 secondes
+  setInterval(reloadWindow, 5000); // 5000 millisecondes = 5 secondes
   </script>
 </html>
