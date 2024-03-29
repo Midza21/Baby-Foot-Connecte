@@ -142,3 +142,9 @@ apres avoir installer restap ca m'a changé d'environnement
 j'ai fais un "sudo apt-get autoremove" et plus rien plus de connexion rien 
 meme le localhost je ne peux plus y accéder 
 est ce que je peux faire un back up
+
+
+28/03/2024  
+
+Aujourd'hui grosse avancée reset de la rapsberry à 0 du coup re installation de l'api avec les framework le script configuration de l'api avec les nouvelles fonctionnalitées but en direct sur l'api de mon ordi perso
+a tester sur la rasp
