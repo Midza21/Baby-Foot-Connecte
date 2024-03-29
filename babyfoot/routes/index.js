@@ -1,46 +1,17 @@
 var express = require("express");
 var router = express.Router();
-<<<<<<< HEAD
-const  { PrismaClient } =  require("@prisma/client") 
-const  {createHmac} = require('node:crypto');
-const { empty } = require('@prisma/client/runtime/library');
-const bcrypt = require('bcryptjs');
-// const bodyParser = require('body-parser');
-
-const prisma = new PrismaClient();
-
-// Connexion à la page de Connexion de l'application
-
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Connexion' });
-});
-
-
-=======
 const { PrismaClient } = require("@prisma/client");
 const { createHmac } = require("node:crypto");
 const { empty } = require("@prisma/client/runtime/library");
+const bcrypt = require('bcryptjs');
 
 const prisma = new PrismaClient();
 
->>>>>>> origin/Wael
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("index", { title: "Express" });
 });
 
-<<<<<<< HEAD
-// Connexion à la page de Connexion de l'application
-
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Connexion' });
-});
-
-// Retourne tous les users de la base
-router.get("/get_users", async (req, res) => {
-  const allUsers = await prisma.user.findMany({});
-  res.status(200).json(allUsers);
-=======
 // Retourne a la vue classement
 router.get("/classement", async (req, res) => {
   try {
@@ -61,6 +32,10 @@ router.get("/classement", async (req, res) => {
 
 router.get("/admin", function (req, res, next) {
   res.render("admin", { title: "Express" });
+});
+
+router.get("/login", function (req, res, next) {
+  res.render("login", { title: "Express" });
 });
 
 //retourne a la vue supprimer pour l'admin
@@ -89,7 +64,6 @@ router.get("/voir_utilisateur", function (req, res, next) {
 //retourne a la vue voir les partie
 router.get("/voir_partie", function (req, res, next) {
   res.render("voir_partie", { title: "Express" });
->>>>>>> origin/Wael
 });
 
 // Retourne tous les Parties de la base
@@ -196,24 +170,13 @@ router.post("/new_user", async (req, res) => {
   const result = await prisma.user.create({
     data: {
       nom: nom,
-<<<<<<< HEAD
-      email : email,
-      password: password 
-      ? createHmac('sha256', password).update('667 Ekip !').digest('hex') :"",  
-      role: "joueur", 
-=======
       email: email,
       password: hashedPassword, // Utilisez le mot de passe haché ici
->>>>>>> origin/Wael
     },
   });
   res.json(result);
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/Wael
 // Crée un nouveau Game avec les données du formulaire
 router.post("/new_game", async (req, res) => {
   try{
@@ -274,56 +237,8 @@ router.delete("/delete_game/:id", async (req, res) => {
 });
 
 
-<<<<<<< HEAD
-// Supprimer une Partie avec son ID
-router.delete("/delete_game/:id", async (req, res) => {
-    try {
-        const gameId = parseInt(req.params.id, 10);
-        const gameExist = await prisma.games.findUnique({
-          where : {id: gameId},
-      });
-      if(! gameExist)
-      {
-        return res.status(404).json({ erreur: 'Partie non trouvée' });
-      }
-      await prisma.games.delete({
-        where: { id: gameId },
-      });
-    }
-    catch (error) {
-      console.error(error);
-      res.status(500).json({ erreur: 'Erreur lors de la suppression de la partie' });
-    }
-  });
-
-  // Supprimer une entité avec son ID
-router.delete("/delete_babyfoot/:id", async (req, res) => {
-    try {
-        const babyfootId = parseInt(req.params.id, 10);
-        const babyfootExist = await prisma.babyfoot.findUnique({
-          where : {id: babyfootId},
-      });
-      if(! babyfootExist)
-      {
-        return res.status(404).json({ erreur: 'Babyfoot non trouvée' });
-      }
-      await prisma.babyfoot.delete({
-        where: { id: babyfootId },
-      });
-    }
-    catch (error) {
-      console.error(error);
-      res.status(500).json({ erreur: 'Erreur lors de la suppression du babyfoot' });
-    }
-  });
-
-// Mettre à jour son babyfoot par son Id
-router.put("/update_babyfoot/:id", async (req, res) => {
-  
-=======
 // Mettre à jour un user par son Id
 router.put("/update_user/:id", async (req, res) => {
->>>>>>> origin/Wael
   try {
     const userId = parseInt(req.params.id, 10);
     const { nom, email, password } = req.body;
@@ -549,9 +464,13 @@ router.post('/login', async (req, res) => {
   
   if (user) {
     // Création d'une session utilisateur
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const hashedPassword = createHmac("sha256", password)
+      .update("I love cupcakes")
+      .digest("hex");
+    console.log(hashedPassword);
+    console.log(user);
     // Comparaison du mot de passe haché avec celui stocké dans la base de données
-    if (passwordMatch) {
+    if (hashedPassword == user.password) {
       // Authentification réussie, définir l'utilisateur dans la session
       req.session.user = user;
       console.log(user);  
