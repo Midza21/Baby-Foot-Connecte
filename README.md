@@ -153,4 +153,4 @@ a tester sur la rasp
 
 finalisation du clavier virtuelle sur l'api ok finalisation des routes 
 tout fonctionne correctement
-
+ecrant installé sur la rasp
