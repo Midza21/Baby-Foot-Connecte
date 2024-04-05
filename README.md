@@ -148,3 +148,9 @@ est ce que je peux faire un back up
 
 Aujourd'hui grosse avancée reset de la rapsberry à 0 du coup re installation de l'api avec les framework le script configuration de l'api avec les nouvelles fonctionnalitées but en direct sur l'api de mon ordi perso
 a tester sur la rasp
+
+05/04/2024
+
+finalisation du clavier virtuelle sur l'api ok finalisation des routes 
+tout fonctionne correctement
+
