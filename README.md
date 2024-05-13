@@ -103,7 +103,7 @@ Brouillon :
 ![Cover](https://github.com/WaelChb/Baby-Foot-Connecte/blob/Wael/thumbnail_IMG_5396.jpg)
 
 
-À l'aide de cette maquette nous avons pu savoir ou nous allons positionner nos capteurs, ecrant, LED etc...
+À l'aide de cette maquette nous avons pu savoir ou nous allons positionner nos capteurs, écran, LED etc...
 
 Pour l'élaboration de la détection de but nous avons opté pour un laser et une photorésistance quand un obstacle coupe le laser le but est validé
 
@@ -112,7 +112,7 @@ Pour l'élaboration de la détection de but nous avons opté pour un laser et un
 
 06/03/2024
 
-Installation de la raspberry pi sous linux attribution des roles etudes de la maquette  
+Installation de la raspberry pi sous linux attribution des rôles études de la maquette  
 
 
 
@@ -127,14 +127,14 @@ Il faut que j'installe mysql sur la raspberry node js et tester mon app
 08/03/2024
 
 Finalisation du script npm start reussi 
-problemme au niveau du clavier virtuel essayer avec jquary impossible de le l'integrer au projet 
+Problème au niveau du clavier virtuel essayé avec jquary impossible de le l'intégrer au projet 
 manque les pages formulaires de la partie 
 
 26/03/2024
 
-Aujourd'hui j'ai essayer de faire un hotqpot wifi mais je rencontre des problemes à la derniere etape 
+Aujourd'hui j'ai essayé de faire un hotspot Wi-Fi mais je rencontre des problèmes à la dernière étape 
 Sinon api installé sur la raspberry 
-Je me suis docummenter sur les forum plus chat gtp impossible de faire fonctionner ce partage 
+Je me suis documenté sur les forums plus chat gtp impossible de faire fonctionner ce partage
 
 27/03/2024
 
@@ -153,4 +153,4 @@ a tester sur la rasp
 
 finalisation du clavier virtuelle sur l'api ok finalisation des routes 
 tout fonctionne correctement
-ecrant installé sur la rasp
+ecran installé sur la rasp
