@@ -8,7 +8,7 @@ Baby-Foot-Connecte
 Présentation du projet
 
 Le projet consiste à créer un baby-foot connecté qui permettra aux joueurs de suivre les scores sur un écran et de vérifier si le ballon a franchi correctement la ligne de but. Les données seront ensuite stockées dans une base de données à l'aide d'une API.
-Je pense que ce projet sera monter par nos soin dans le faclab avec toutes les machines à disposition 
+Je pense que ce projet sera monter par nos soins dans le faclab avec toutes les machines à disposition 
 
 **Objectif du baby-foot connecté**
 
