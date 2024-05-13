@@ -87,16 +87,17 @@ router.post('/goal', async (req, res) => {
   }
 
   // Update the score based on which team scored
+  console.log (equipe);
   if (equipe === 'bleus') {
     await prisma.game.update({
       where: { id: game.id },
-      data: { score1: game.score1 + 1 }
+      data: { score2: game.score2 + 1 }
     });
     message = 'Equipe bleu a marqué';
   } else {
     await prisma.game.update({
       where: { id: game.id },
-      data: { score2: game.score2 + 1 }
+      data: { score1: game.score1 + 1 }
     });
     message = 'Equipe rouge a marqué';
   }
